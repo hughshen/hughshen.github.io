@@ -8,7 +8,7 @@ tags:
 ---
 
 ##安装Hexo
-ubuntu下只有两条命令
+ubuntu下只有几条命令
 ```bash
 sudo apt-get install git
 wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
@@ -30,7 +30,7 @@ hexo s
 ```
 在浏览器输入`localhost:4000`就能看到新建的博客了。[具体](http://hexo.io/docs/)
 
-##部署到github
+##部署到Github
 在Github上新建一个仓库，仓库名称为`
 账户名称.github.com`，必须是这个！！
 
