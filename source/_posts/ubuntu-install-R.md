@@ -7,7 +7,7 @@ tags:
 - RStudio
 ---
 
-##安装R
+## 安装R
 添加以下任意一个到`/etc/apt/sources.list`
 ```
 deb http://<my.favorite.cran.mirror>/bin/linux/ubuntu utopic/
@@ -29,7 +29,9 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 安装完之后在终端输入`R`查看是否安装成功。 [具体](http://mirrors.opencas.cn/cran/)
 
-##安装RStudio
+---
+
+## 安装RStudio
 RStudio直接下载`deb`包用`dpkg`安装就行，对于RStudio Server [具体](http://www.rstudio.com/products/rstudio/download-server/)
 ```bash
 sudo apt-get install gdebi-core
