@@ -7,7 +7,7 @@ tags:
 ---
 
 安装过程参考[1](http://www.cnblogs.com/kinglau/p/3794433.html)，[2](http://www.cnblogs.com/kinglau/p/3796164.html)，感谢原[作者](http://home.cnblogs.com/u/kinglau/)。本文用作记录。
-## 单机模式
+## **单机模式**
 ### 创建用户组和用户并添加权限
 ```bash
 sudo addgroup hadoop
@@ -101,9 +101,7 @@ bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.0-so
 cat output/*
 ```
 
----
-
-## 伪分布模式
+## **伪分布模式**
 ### 配置xml文件
 文件均在`/usr/local/hadoop/etc/hadoop/`
 

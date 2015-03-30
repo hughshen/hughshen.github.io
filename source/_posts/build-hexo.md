@@ -16,9 +16,8 @@ nvm install 0.12 # 版本
 npm install -g hexo-cli
 ```
 <!--more-->
-在安装nvm的时候，连接不成功，直接到Github下载[nvm](https://github.com/creationix/nvm)的文件，然后运行install.sh。
 
----
+在安装nvm的时候，连接不成功，直接到Github下载[nvm](https://github.com/creationix/nvm)的文件，然后运行install.sh。
 
 ## 搭建本地博客
 ```bash
@@ -31,8 +30,6 @@ hexo g
 hexo s
 ```
 在浏览器输入`localhost:4000`就能看到新建的博客了。[具体](http://hexo.io/docs/)
-
----
 
 ## 部署到Github
 在Github上新建一个仓库，仓库名称为`

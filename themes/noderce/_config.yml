@@ -1,0 +1,16 @@
+menu:
+  首页: /
+  归档: /archives
+  分类: /categories
+  标签: /tags
+
+excerpt_link: Read More ›
+
+# google_analytics: UA-32857089-1
+
+# rss: http://feeds.feedburner.com/willerce
+
+# comment_provider: duoshuo
+# Duoshuo comment
+# duoshuo:
+# short_name: willerce
