@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › Ubuntu下安装R及RStudio</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="安装R添加以下任意一个到/etc/apt/sources.list1234deb http://&amp;lt;my.favorite.cran.mirror&amp;gt;/bin/linux/ubuntu utopic/deb http://&amp;lt;my.favorite.cran.mirror&amp;gt;/bin/linux/ubuntu trusty/deb http://&amp;lt;my.favorite.cran.mirror&amp;gt;/bin/linux/ubuntu precise/deb http://&amp;lt;my.favorite.cran.mirror&amp;gt;/bin/linux/ubuntu lucid/">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Ubuntu下安装R及RStudio"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hugh&#39;Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Hugh&#39;Blog</a></h1>
+  <h2><a href="/"></a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">归档</a></li>
+      
+      <li><a href="/categories">分类</a></li>
+      
+      <li><a href="/tags">标签</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">Ubuntu下安装R及RStudio</h1>
+  
+
+      
+      <time datetime="2015-03-28T12:50:56.000Z">2015-03-28</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="安装R">安装R</h2><p>添加以下任意一个到<code>/etc/apt/sources.list</code><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deb <span class="symbol">http:</span>/<span class="regexp">/&lt;my.favorite.cran.mirror&gt;/bin</span><span class="regexp">/linux/ubuntu</span> utopic/</span><br><span class="line">deb <span class="symbol">http:</span>/<span class="regexp">/&lt;my.favorite.cran.mirror&gt;/bin</span><span class="regexp">/linux/ubuntu</span> trusty/</span><br><span class="line">deb <span class="symbol">http:</span>/<span class="regexp">/&lt;my.favorite.cran.mirror&gt;/bin</span><span class="regexp">/linux/ubuntu</span> precise/</span><br><span class="line">deb <span class="symbol">http:</span>/<span class="regexp">/&lt;my.favorite.cran.mirror&gt;/bin</span><span class="regexp">/linux/ubuntu</span> lucid/</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>更新源然后安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install r-base r-base-dev</span><br></pre></td></tr></table></figure></p>
+<p>如果出现<code>GPG 错误</code>的话，继续终端输入<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver<span class="class">.ubuntu</span><span class="class">.com</span> --recv-keys E084DAB9</span><br></pre></td></tr></table></figure></p>
+<p>另外，在其他类似的情况也可以这样解决，例如报错<code>... 73E6B0FAA42A6CF5</code>，就取后面的八位<code>A42A6CF5</code>，然后使用上面的命令并替换就行。</p>
+<p>安装完之后在终端输入<code>R</code>查看是否安装成功。 <a href="http://mirrors.opencas.cn/cran/" target="_blank" rel="external">具体</a></p>
+<h2 id="安装RStudio">安装RStudio</h2><p>RStudio直接下载<code>deb</code>包用<code>dpkg</code>安装就行，对于RStudio Server <a href="http://www.rstudio.com/products/rstudio/download-server/" target="_blank" rel="external">具体</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gdebi-core</span><br><span class="line">sudo apt-get install libapparmor1 <span class="comment"># Required only for Ubuntu, not Debian</span></span><br><span class="line">wget http://download2.rstudio.org/rstudio-server-<span class="number">0.98</span>.<span class="number">1103</span>-i386.deb</span><br><span class="line">sudo gdebi rstudio-server-<span class="number">0.98</span>.<span class="number">1103</span>-i386.deb</span><br></pre></td></tr></table></figure></p>
+<p>安装完之后，可以使用，但是有两个小问题。 </p>
+<p>1.编辑<code>Source</code>文件不能保存，弹出<code>no such file or dir</code>错误。</p>
+<p>解决：找到<code>RStudio</code>的启动文件，然后修改其用户权限<code>chmod   u+s   ***（可执行文件名）</code>；或者在建立<code>workspace</code>文件夹的时候，直接建立，不要使用<code>sudo</code>。</p>
+<p>2.安装包失败，显示<code>installation of package &#39;XML&#39; had non-zero exit status</code>或者<code>package &#39;rvest&#39; is not available (for R version 3.1.3)</code></p>
+<p>解决：原因是这些包依赖了特别的库 <a href="http://www.linuxidc.com/Linux/2012-07/65078.htm" target="_blank" rel="external">参考</a></p>
+<blockquote>
+<ul>
+<li>Cairo：<code>sudo apt-get install libcairo2-dev libxt-dev</code></li>
+<li>cairoDevice：<code>sudo apt-get install r-cran-cairoDevice</code></li>
+<li>rgl：<code>sudo apt-get install r-cran-rgl</code></li>
+<li>fftw：<code>sudo apt-get install libfftw3-dev</code></li>
+<li>rcdd：<code>sudo apt-get install libgmp3-dev</code></li>
+<li>rgdal：<code>sudo apt-get install libgdal-dev libproj-dev</code></li>
+<li>XML：<code>sudo apt-get install libxml++2.6-dev</code></li>
+<li>rimages：<code>sudo apt-get install fftw-dev fftw2</code></li>
+<li>RCurl：<code>sudo apt-get install libcurl4-gnutls-dev</code>，不行的话再安装<code>libcurl4-openssl-dev</code></li>
+</ul>
+</blockquote>
+<p>最后<code>install.packages(&quot;xxx&quot;)</code>即可</p>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/study/">学习</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/R/">R</a>, <a href="/tags/RStudio/">RStudio</a>, <a href="/tags/Ubuntu/">Ubuntu</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>
