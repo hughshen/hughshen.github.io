@@ -72,6 +72,3 @@ deploy:
   type: git
   repository: https://github.com/hughshen/hughshen.github.io.git
   branch: master
-
-# Since
-since: 2015

@@ -3,7 +3,7 @@
     <header>
       <%- partial('post/title') %>
       <% if (item.layout != 'page'){ %>
-      <time datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time>
+      <time datetime="<%= item.date.toDate().toISOString() %>"><%= theme.post_at %><%= item.date.format(config.date_format) %></time>
       <% } %>
     </header>
     <div class="entry">
