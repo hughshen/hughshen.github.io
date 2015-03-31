@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › R使用笔记</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="No such file or directory解决：找到 RStudio 的启动文件，然后修改其用户权限 chmod   u+s   filename；或者在建立 workspace 文件夹的时候，直接建立，不要使用 sudo">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="R使用笔记"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hugh&#39;Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">Hugh&#39;Blog</a></h1>
+  <h2><a href="/"></a></h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">归档</a></li>
+      
+      <li><a href="/categories">分类</a></li>
+      
+      <li><a href="/tags">标签</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">R使用笔记</h1>
+  
+
+      
+      <time datetime="2015-03-31T06:51:47.000Z">发表于2015-03-31</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h3 id="No_such_file_or_directory"><em>No such file or directory</em></h3><p>解决：找到 <em>RStudio</em> 的启动文件，然后修改其用户权限 <em>chmod   u+s   filename</em>；或者在建立 <em>workspace</em> 文件夹的时候，直接建立，不要使用 <em>sudo</em></p>
+<a id="more"></a>
+<h3 id="install-packages()"><em>install.packages()</em></h3><p>例如显示 <em>installation of package ‘XML’ had non-zero exit status</em> 或者 <em>package ‘rvest’ is not available (for R version 3.1.3)</em> 等等</p>
+<p>解决：原因是这些包依赖了特别的库，具体参考 <a href="http://www.linuxidc.com/Linux/2012-07/65078.htm" target="_blank" rel="external">1</a>，<a href="http://rattle.togaware.com/rattle-install-troubleshooting.html" target="_blank" rel="external">2</a></p>
+<blockquote>
+<ul>
+<li>Cairo：<em>sudo apt-get install libcairo2-dev libxt-dev</em></li>
+<li>cairoDevice：<em>sudo apt-get install r-cran-cairoDevice</em></li>
+<li>rgl：<em>sudo apt-get install r-cran-rgl</em></li>
+<li>fftw：<em>sudo apt-get install libfftw3-dev</em></li>
+<li>rcdd：<em>sudo apt-get install libgmp3-dev</em></li>
+<li>rgdal：<em>sudo apt-get install libgdal-dev libproj-dev</em></li>
+<li>XML：<em>sudo apt-get install libxml++2.6-dev</em></li>
+<li>rimages：<em>sudo apt-get install fftw-dev fftw2</em></li>
+<li>RCurl：<em>sudo apt-get install libcurl4-gnutls-dev</em>，不行的话再安装 <em>libcurl4-openssl-dev</em></li>
+<li>RGtk2：<em>sudo apt-get install libgtk2.0-dev</em>，安装 <em>rattle</em> 时提示 <em>GTK version 2.8.0 required</em>，但是运行 <em>rattle()</em> 时界面不能使用（无响应）</li>
+<li>最后 <em>install.packages(“xxx”)</em> 即可</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/study/">学习</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/R/">R</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>
