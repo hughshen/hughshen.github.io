@@ -14,9 +14,29 @@ xdg-user-dirs-gtk-update
 <!--more-->
 
 ### Dos、Unix文件编码转换 [参考](https://kb.iu.edu/d/acux)
-1. *vim*
- > `:set ff=unix` 转换为*Unix*，`:set ff=dos`转换为*Windows*
-2. *vi*
- > 使用`:1,$s/^M//g`来移除*^M*字符，为了输入*^M*，需要先*Ctrl-v*, 然后*Enter*或者*return*.
-3. 使用工具*dos2unix*,*unix2dos*
- > `dos2unix winfile.txt unixfile.txt`，`unix2dos unixfile.txt winfile.txt`
+1.*vim*
+```
+:set ff=unix #转换为 Unix
+:set ff=dos #转换为 Windows
+```
+2.*vi*
+ ```
+:1,$s/^M//g #移除 ^M 字符，为了输入 ^M，需要先 Ctrl-v , 然后 Enter 或者 return
+```
+3.使用工具*dos2unix*,*unix2dos*
+```
+dos2unix winfile.txt unixfile.txt
+unix2dos unixfile.txt winfile.txt
+```
+
+###查看文件夹大小
+1.查看分区情况
+```
+df -h
+```
+2.查看文件或文件夹大小
+```
+du -h --max-depth=1
+```
+*-h* 人类可读，比如显示 *MB*，*GB* 等等。
+*--max-depth=N* 指定目录层数，如果是当前文件夹占用空间，*N=0* 即可，如果是当前目录及下一级目录，*N=1* 即可。
