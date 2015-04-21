@@ -64,20 +64,12 @@
       
         <h3 id="目录文件夹名称改为英文">目录文件夹名称改为英文</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=en_US</span><br><span class="line">xdg-user-dirs-gtk-update</span><br></pre></td></tr></table></figure>
 <p>在弹出的窗口中询问是否将目录转化为英文路径，同意并关闭，然后改回中文 <em>epxort LANG=zh_CN</em> 重启就行<br><a id="more"></a></p>
-<h3 id="Dos、Unix文件编码转换_参考">Dos、Unix文件编码转换 <a href="https://kb.iu.edu/d/acux" target="_blank" rel="external">参考</a></h3><ol>
-<li><em>vim</em><blockquote>
-<p><code>:set ff=unix</code> 转换为<em>Unix</em>，<code>:set ff=dos</code>转换为<em>Windows</em></p>
-</blockquote>
-</li>
-<li><em>vi</em><blockquote>
-<p>使用<code>:1,$s/^M//g</code>来移除<em>^M</em>字符，为了输入<em>^M</em>，需要先<em>Ctrl-v</em>, 然后<em>Enter</em>或者<em>return</em>.</p>
-</blockquote>
-</li>
-<li>使用工具<em>dos2unix</em>,<em>unix2dos</em><blockquote>
-<p><code>dos2unix winfile.txt unixfile.txt</code>，<code>unix2dos unixfile.txt winfile.txt</code></p>
-</blockquote>
-</li>
-</ol>
+<h3 id="Dos、Unix文件编码转换_参考">Dos、Unix文件编码转换 <a href="https://kb.iu.edu/d/acux" target="_blank" rel="external">参考</a></h3><p>1.<em>vim</em><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:<span class="keyword">set</span> ff=unix <span class="comment">#转换为 Unix</span></span><br><span class="line">:<span class="keyword">set</span> ff=dos <span class="comment">#转换为 Windows</span></span><br></pre></td></tr></table></figure></p>
+<p>2.<em>vi</em><br> <figure class="highlight parser3"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">:</span><span class="number">1</span><span class="xml">,</span><span class="variable">$s</span><span class="xml">/</span><span class="keyword">^M</span><span class="xml">//g #移除 </span><span class="keyword">^M</span><span class="xml"> 字符，为了输入 </span><span class="keyword">^M</span><span class="xml">，需要先 Ctrl-v , 然后 Enter 或者 return</span></span><br></pre></td></tr></table></figure></p>
+<p>3.使用工具<em>dos2unix</em>,<em>unix2dos</em><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dos2unix winfile<span class="class">.txt</span> unixfile<span class="class">.txt</span></span><br><span class="line">unix2dos unixfile<span class="class">.txt</span> winfile.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看文件夹大小">查看文件夹大小</h3><p>1.查看分区情况<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">df</span> -h</span><br></pre></td></tr></table></figure></p>
+<p>2.查看文件或文件夹大小<br><figure class="highlight rsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h --<span class="built_in">max</span>-<span class="built_in">depth</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p><em>-h</em> 人类可读，比如显示 <em>MB</em>，<em>GB</em> 等等。<br><em>—max-depth=N</em> 指定目录层数，如果是当前文件夹占用空间，<em>N=0</em> 即可，如果是当前目录及下一级目录，<em>N=1</em> 即可。</p>
 
       
     </div>
