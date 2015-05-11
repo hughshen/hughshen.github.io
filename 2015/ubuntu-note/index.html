@@ -72,7 +72,7 @@
 <p><em>-h</em> 人类可读，比如显示 <em>MB</em>，<em>GB</em> 等等。<br><em>—max-depth=N</em> 指定目录层数，如果是当前文件夹占用空间，<em>N=0</em> 即可，如果是当前目录及下一级目录，<em>N=1</em> 即可。</p>
 <h3 id="终端下调节音量_参考">终端下调节音量 <a href="http://linux.cn/thread-13254-1-1.html" target="_blank" rel="external">参考</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alsamixer</span><br></pre></td></tr></table></figure>
 <p>上下调节音量，左右选择设备，<em>Esc</em> 退出。</p>
-
+<h3 id="修正时区">修正时区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/localtime /etc/localtime.old</span><br><span class="line">ln <span class="operator">-s</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime <span class="comment"># 修改默认时区为上海</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
