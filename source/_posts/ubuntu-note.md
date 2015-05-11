@@ -46,3 +46,9 @@ du -h --max-depth=1
 alsamixer
 ```
 上下调节音量，左右选择设备，*Esc* 退出。
+
+###修正时区
+```bash
+mv /etc/localtime /etc/localtime.old
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime # 修改默认时区为上海
+```
