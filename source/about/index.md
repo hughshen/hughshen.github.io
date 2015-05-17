@@ -1,3 +1,3 @@
-title: "about"
+title: 关于
 date: 2015-03-28 20:40:23
 ---
