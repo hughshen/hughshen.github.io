@@ -1,8 +1,8 @@
 title: Ubuntu使用笔记
 date: 2015-03-29 16:28:10
-categories: 学习
+categories: Note
 tags:
-- Ubuntu
+- ubuntu
 ---
 
 ### 目录文件夹名称改为英文

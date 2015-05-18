@@ -1,6 +1,6 @@
 title: R使用笔记
 date: 2015-03-31 14:51:47
-categories: 学习
+categories: Note
 tags:
   - R
 ---

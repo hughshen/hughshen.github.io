@@ -1,9 +1,9 @@
 title: .htaccess正则表达式
 date: 2015-04-27 02:33:46
-categories: 学习
+categories:  PHP
 tags:
 - htaccess
-- Regex
+- regex
 ---
 
 转载于：[http://www.oseye.net/user/199/blog/100](http://www.oseye.net/user/199/blog/100)

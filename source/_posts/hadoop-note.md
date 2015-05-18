@@ -1,8 +1,8 @@
 title: Hadoop使用笔记
 date: 2015-04-21 20:06:26
-categories: 学习
+categories: Note
 tags:
-- Hadoop
+- hadoop
 ---
 
 ### name与data的clusterID不一样导致错误Incompatible clusterIDs

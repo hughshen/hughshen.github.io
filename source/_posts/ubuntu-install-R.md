@@ -1,8 +1,8 @@
 title: Ubuntu下安装R及RStudio
 date: 2015-03-28 20:50:56
-categories: 学习
+categories: DataMining
 tags:
-- Ubuntu
+- ubuntu
 - R
 - RStudio
 ---

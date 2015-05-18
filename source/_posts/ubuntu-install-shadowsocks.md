@@ -1,9 +1,9 @@
 title: VPS中安装Shadowsocks
 date: 2015-05-11 13:15:44
-categories: 学习
+categories: GFW
 tags:
-- Ubuntu
-- Shadowsocks
+- ubuntu
+- shadowsocks
 ---
 
 ###服务端安装（Ubuntu1404），[具体](https://github.com/shadowsocks/shadowsocks )

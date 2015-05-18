@@ -1,10 +1,10 @@
 title: 搭建Hexo博客，并部署到Github上
 date: 2015-03-28 18:44:21
-categories: 学习
+categories: Blog
 tags:
-- Hexo
-- Github
-- Ubuntu
+- hexo
+- github
+- ubuntu
 ---
 
 ## 安装Hexo

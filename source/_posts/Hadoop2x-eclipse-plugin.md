@@ -1,9 +1,9 @@
 title: Hadoop2x-eclipse-plugin编译
 date: 2015-04-22 21:32:44
-categories: 学习
+categories: DataMining
 tags:
-- Hadoop
-- Eclipse
+- hadoop
+- eclipse
 ---
 
 ###到 [Github](https://github.com/winghc/hadoop2x-eclipse-plugin)下载文件并解压

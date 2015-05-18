@@ -1,9 +1,9 @@
 title: Ubuntu1404下安装Hadoop2.6.0
 date: 2015-03-29 16:42:24
-categories: 学习
+categories: DataMining
 tags:
-- Ubuntu
-- Hadoop
+- ubuntu
+- hadoop
 ---
 
 安装过程参考[1](http://www.cnblogs.com/kinglau/p/3794433.html)，[2](http://www.cnblogs.com/kinglau/p/3796164.html)，感谢原[作者](http://home.cnblogs.com/u/kinglau/)，本文用作记录

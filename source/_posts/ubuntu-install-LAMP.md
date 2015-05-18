@@ -1,9 +1,9 @@
 title: Ubuntu1404下安装LAMP
 date: 2015-04-27 00:56:39
-categories: 学习
+categories: PHP
 tags:
-- Ubuntu
-- LAMP
+- ubuntu
+- lamp
 ---
 
 ###安装Apache2
