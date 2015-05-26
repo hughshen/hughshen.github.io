@@ -6,8 +6,10 @@ tags:
 ---
 
 ###多个文件中查找
- 语法：`:vim[grep][!] /{pattern}/[g][j] {file}`
-例子：`:vimgrep /class/ *.php`
+语法：`:vim[grep][!] /{pattern}/[g][j] {file}`
+例子：
+`:vimgrep /class/ *.php` #当前文件夹下（不包括子文件夹）所有php文件中搜索class字符串
+`:vimgrep /class/ */**/*` #当前文件夹下（包括所有子文件夹）所有文件
 查看：`:copen`
 
 <!--more-->
