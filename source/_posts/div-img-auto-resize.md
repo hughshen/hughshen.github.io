@@ -50,7 +50,7 @@ img.onload = function() {
 
 后来找资料的时候看到可以使用css来处理，效果不错。
 ```
-<style>
+<style type="text/css">
 	div {
 		width: 500px;
 		height: 500px;
@@ -66,12 +66,13 @@ img.onload = function() {
 		max-width: 100%;
 		max-height: 100%;
 	}
+</style>
 ```
 ---
 *2015-06-24*
 今天使用的时候图片没有垂直居中效果，想了一个笨方法。 
 ```
-<style>
+<style type="text/css">
 	div {
 		width: 500px;
 		height: 500px;
@@ -85,4 +86,5 @@ img.onload = function() {
 		max-width: 100%;
 		max-height: 100%;
 	}
+</style>
 ```
