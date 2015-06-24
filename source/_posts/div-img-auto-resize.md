@@ -67,3 +67,22 @@ img.onload = function() {
 		max-height: 100%;
 	}
 ```
+---
+*2015-06-24*
+今天使用的时候图片没有垂直居中效果，想了一个笨方法。 
+```
+<style>
+	div {
+		width: 500px;
+		height: 500px;
+		text-align: center;
+		text-align: -webkit-center;
+		text-align: -moz-center;
+	}
+	div img {
+		width: auto;
+		height: 100%; /*把图片高度铺满div*/
+		max-width: 100%;
+		max-height: 100%;
+	}
+```
