@@ -14,3 +14,24 @@ tags:
 ```
 
 <!--more-->
+
+---
+
+2015-07-09
+还以为上面的写法已经够用了呢，谁知在html上失效了。
+google找到了另一个写法，解决了问题。
+```
+<?php _e("<!--:en-->english text<!--:--><!--:zh-->chinese text<!--:-->"); ?>
+```
+参考文章：[Writing html in the template file with multiple languages](https://wordpress.org/support/topic/plugin-qtranslate-writing-html-in-the-template-file-with-multiple-languages)
+
+以下是今天使用的例子，目的是修改qtranslate-x插件原来text的显示，使文字统一为中文或者英文。
+```
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		// qtranslate-x
+		$('ul.qtranxs_language_chooser li a[hreflang="en"] span').text('<?php _e("<!--:en-->ENG<!--:--><!--:zh-->英文<!--:-->"); ?>');
+		$('ul.qtranxs_language_chooser li a[hreflang="zh"] span').text('<?php _e("<!--:en-->CHI<!--:--><!--:zh-->中文<!--:-->"); ?>');
+	});
+</script>
+```
