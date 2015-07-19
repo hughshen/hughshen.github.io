@@ -35,3 +35,12 @@ google找到了另一个写法，解决了问题。
 	});
 </script>
 ```
+
+---
+
+2015-07-18
+虽然之前的_e()解决了问题，但是输出格式不是想要的，_e()会直接换行，google发现以下这种写法，可以满足需求。
+```
+<?php __("<!--:en-->english text<!--:--><!--:zh-->chinese text<!--:-->"); ?>
+```
+阅读：[https://wordpress.org/support/topic/_-_e-and-_xwhats-the-difference-are-there-more](https://wordpress.org/support/topic/_-_e-and-_xwhats-the-difference-are-there-more)
