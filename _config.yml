@@ -7,7 +7,7 @@ title: Hugh'Blog
 subtitle:
 description:
 author: Hugh Shen
-language:
+language: zh-CN
 timezone:
 
 # URL
@@ -44,7 +44,7 @@ highlight:
   tab_replace:
 
 # Category & Tag
-default_category: uncategorized
+default_category: UNCATEGORIZED
 category_map:
 tag_map:
 
@@ -52,7 +52,7 @@ tag_map:
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
+date_format: MMMM DD YYYY
 time_format: HH:mm:ss
 
 # Pagination
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: noderce
+theme: demo
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
