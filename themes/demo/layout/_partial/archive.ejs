@@ -24,7 +24,7 @@
 	</div>
 <% } else if (type == 'category') { %>
 	<div class="archive-title"><p><%= page.category %></p></div>
-	<div class="category">
+	<div class="archive-category">
 		<ul>
 		<% page.posts.sort('date', 'desc').each(function (item) { %>
 			<li>
@@ -35,13 +35,13 @@
 		</ul>
 	</div>
 	<% if (page.total > 1) { %>
-		<div class="page">
+		<div class="archive-page">
 			<%- paginator({prev_text: __('prev'), next_text: __('next')}) %>
 		</div>
 	<% } %>
 <% } else if (type == 'tag') { %>
 	<div class="archive-title"><p><%= page.tag %></p></div>
-	<div class="tag">
+	<div class="archive-tag">
 		<ul>
 		<% page.posts.sort('date', 'desc').each(function (item) { %>
 			<li>
@@ -52,7 +52,7 @@
 		</ul>
 	</div>
 	<% if (page.total > 1) { %>
-		<div class="page">
+		<div class="archive-page">
 			<%- paginator({prev_text: __('prev'), next_text: __('next')}) %>
 		</div>
 	<% } %>
