@@ -28,7 +28,6 @@
 		<ul>
 		<% page.posts.sort('date', 'desc').each(function (item) { %>
 			<li>
-				<time><%= item.date.format('MMMM-DD-YYYY') %></time>
 				<a href="<%= config.root %><%- item.path %>"><%= item.title %></a>
 			</li>
 		<% }) %>
@@ -45,7 +44,6 @@
 		<ul>
 		<% page.posts.sort('date', 'desc').each(function (item) { %>
 			<li>
-				<time><%= item.date.format('MMMM-DD-YYYY') %></time>
 				<a href="<%= config.root %><%- item.path %>"><%= item.title %></a>
 			</li>
 		<% }) %>
