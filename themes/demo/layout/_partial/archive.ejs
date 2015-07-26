@@ -1,34 +1,59 @@
-<%
-var title = '';
-if (page.category) title = page.category;
-if (page.tag) title = page.tag;
-if (page.archive) {
-  if (page.year) title = page.year + (page.month ? '/' + page.month : '');
-  else title = __('archives');
-}
-%>
-<h2 class="archive-title<% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= title %></h2>
-<% if (pagination == 2){ %>
-<% page.posts.each(function(item){ %>
-<%- partial('article', {item: item, index: true}) %>
-<% }); %>
-<%- partial('pagination') %>
-<% } else { %>
-  <% var this_year; %>
-  <article class="archive">
-  <% page.posts.each(function(item){ %>
-    <% var year = item.date.year(); %>
-    <% if (this_year != year || !this_year){ %>
-      <% if(this_year){ %>
-      </div></ul>
-      <% } %>
-      <div class="archive-itme"><div id="<%= year %>" class="archive-year"><%= year %></div>
-      <ul>
-      <% this_year = year; } %>
-      <li>
-      <time datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format("MM-DD") %></time>
-      <a href="<%- config.root %><%- item.path %>"><%= item.title %></a>
-      </li>
-  <% }); %>
-  </article>
-<% } %>
+<% if (type == 'archive') { %>
+	<div class="archive-title"><p><%= _p('archives_count', site.posts.length) %></p></div>
+	<div class="archive">
+		<% year = new Date().getFullYear() %>
+		<div class="year"><p><%= year %></p></div>
+			<ul>
+		<% site.posts.sort('date', 'desc').each(function (item) { %>
+			<% item_year = item.date.year() %>
+			<% if (item_year != year) { %>
+				<% year = item_year %>
+				</ul>
+				</div>
+				<div class="year"><p><%= year %></p></div>
+					<ul>
+			<% } else { %>
+				<li>
+					<time><%= item.date.format('MMM DD') %></time>
+					<a href="<%= config.root %><%- item.path %>"><%= item.title %></a>
+				</li>
+			<% } %>
+		<% }) %>
+			</ul>
+		</div>
+	</div>
+<% } else if (type == 'category') { %>
+	<div class="archive-title"><p><%= page.category %></p></div>
+	<div class="category">
+		<ul>
+		<% page.posts.sort('date', 'desc').each(function (item) { %>
+			<li>
+				<time><%= item.date.format('MMMM-DD-YYYY') %></time>
+				<a href="<%= config.root %><%- item.path %>"><%= item.title %></a>
+			</li>
+		<% }) %>
+		</ul>
+	</div>
+	<% if (page.total > 1) { %>
+		<div class="page">
+			<%- paginator({prev_text: __('prev'), next_text: __('next')}) %>
+		</div>
+	<% } %>
+<% } else if (type == 'tag') { %>
+	<div class="archive-title"><p><%= page.tag %></p></div>
+	<div class="tag">
+		<ul>
+		<% page.posts.sort('date', 'desc').each(function (item) { %>
+			<li>
+				<time><%= item.date.format('MMMM-DD-YYYY') %></time>
+				<a href="<%= config.root %><%- item.path %>"><%= item.title %></a>
+			</li>
+		<% }) %>
+		</ul>
+	</div>
+	<% if (page.total > 1) { %>
+		<div class="page">
+			<%- paginator({prev_text: __('prev'), next_text: __('next')}) %>
+		</div>
+	<% } %>
+<% } else {} %>

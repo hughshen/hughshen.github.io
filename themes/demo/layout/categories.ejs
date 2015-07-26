@@ -1,0 +1,6 @@
+<% if (site.categories.length) { %>
+	<div class="archive-title"><p><%= _p('categories_count', site.categories.length) %></p></div>
+	<div class="archive-categories">
+		<%- list_categories(site.categories) %>
+	</div>
+<% } %>

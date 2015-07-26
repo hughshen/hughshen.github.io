@@ -4,16 +4,12 @@
     <tr>
       <td width='50%' align='left'>
         <% if (page.prev){ %>
-        <div class="alignleft">
-          <a href="<%- config.root %><%- page.prev_link %>" class="alignleft prev">‹ <%= __('prev') %></a>
-        </div>
+          <a href="<%- config.root %><%- page.prev_link %>" class="alignleft prev"><%= __('prev') %></a>
         <% } %>
       </td>
       <td width='50%' align='right'>
         <% if (page.next){ %>
-        <div class="alignright">
-          <a href="<%- config.root %><%- page.next_link %>" class="alignright next"><%= __('next') %> ›</a>
-        </div>
+          <a href="<%- config.root %><%- page.next_link %>" class="alignright next"><%= __('next') %></a>
         <% } %>
       </td>
     </tr>

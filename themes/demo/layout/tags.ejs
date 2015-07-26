@@ -1,0 +1,6 @@
+<% if (site.tags.length) { %>
+	<div class="archive-title"><p><%= _p('tags_count', site.tags.length) %></p></div>
+	<div class="archive-tags">
+		<%- tagcloud({min_font: 14, max_font: 28}) %>
+	</div>
+<% } %>

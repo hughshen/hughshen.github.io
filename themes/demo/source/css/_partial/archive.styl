@@ -1,33 +1,90 @@
 .archive-title
-  color color-meta
-  font-weight normal
-  text-shadow 0 0 1px #fff
-  background #fff
-  padding 28px 0 28px 28px
-  box-shadow 0 2px 6px rgba(100,100,100,0.3)
-  margin-bottom 20px
+  font-size 1.55em
+  line-height 1.55em
+  padding 0.5em 0
 
 .archive
-  margin-bottom 50px
+  .year
+    color #666
+    padding 0.3em 0
 
   ul
-    list-style none
-    margin-left 43px
-    margin-top -26px
+    time
+      display block
+      color #939393
+      font-size 0.85em
+      line-height 1.5em
+
     li
-      margin 7px 0
-      time
-        margin-right 8px
-        color #666
+      float none
+      padding 0.8em
+      padding-left 2.5em
+      margin 0
+	
+    li:hover
+      border-left 0.1em solid #fff
 
-  .archive-itme
-    margin-bottom 20px
-    padding-bottom 10px
-    border-bottom 1px dashed #ddd
+    li:hover a
+      border-bottom 0.1em solid #000
 
+.category, .tag
+  border-left 1px solid #ddd
 
-  .archive-year
-    color #666
-    margin-bottom 10px
+  ul
 
+    li
+      float none
+      padding 0.3em
+      padding-left 1em
+      margin 0
 
+    li:hover
+      border-left 0.2em solid #000
+
+    li:hover a
+      border-bottom 0.1em dashed #000
+
+.page
+  padding 1em 0
+  
+  a, span
+    padding 0 0.6em
+	  
+.archive-categories
+  .category-list
+
+    .category-list-item
+      float none
+      padding-bottom 1em
+      margin 0
+
+      .category-list-link:before
+        content '>'
+        padding-right 0.5em
+
+      .category-list-count
+        color #939393
+
+      .category-list-count:before
+        content '('
+        padding-left 0.4em
+
+      .category-list-count:after
+        content ')'
+
+    .category-list-item:hover
+      border-left 0.1em solid #fff
+
+.archive-tags
+  a
+    display inline-block
+
+  a:hover
+    border-bottom 0.1em solid #000
+
+  a:before
+    content '#'
+
+  a:after
+    content ''
+    padding-right 1em
