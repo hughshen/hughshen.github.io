@@ -14,13 +14,16 @@ tags:
 <!--more-->
 
 这个是主题文件夹的目录树
+```
 demo
 ├── _config.yml
 ├── languages
 ├── layout
 └── source
+```
 
 主要看layout目录下的文件就行，上面是现在在用的主题，其中layout的一级目录下的文件都应该包含这些文件（其中categroies.ejs与tags.ejs是自己添加的，可以不用）
+```
 layout
 ├── archive.ejs  //文章归档，包括单个分类与单个标签，调用_partial/archive.ejs
 ├── categories.ejs  //显示所有分类的布局，非必须
@@ -33,6 +36,7 @@ layout
 ├── tag.ejs  //单个标签显示的布局，调用_partial/archive.ejs
 ├── tags.ejs  //显示所有标签的布局，非必须
 └── _widget  //显然是widget布局文件，目前没用过
+```
 
 ---
 
