@@ -1,3 +1,5 @@
-<div>
-	<h1><a href="<%- config.root %>"><%= config.title %></a></h1>
-</div>
+<ul>
+	<% for (var i in theme.menu) {%>
+		<li><a href="<%- theme.menu[i] %>"><%= i %></a></li>
+	<% } %>
+</ul>
