@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › PHP实现301重定向</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="php中实现301重定向挺简单的，代码也不复杂，无非就是对域名进行判断，不是新域名就使用header函数进行跳转，但是中途也出现一些问题，在此做个记录。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="PHP实现301重定向"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-08-11T14:20:04.000Z">August 11 2015</time>
+    
+    
+  
+    <h2 class="title">PHP实现301重定向</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>php中实现301重定向挺简单的，代码也不复杂，无非就是对域名进行判断，不是新域名就使用header函数进行跳转，但是中途也出现一些问题，在此做个记录。</p>
+<a id="more"></a>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$host</span> = <span class="string">'www.new.com'</span>; // 要跳转的域名</span><br><span class="line"><span class="variable">$query</span> = $_SERVER[<span class="string">'REQUEST_URI'</span>]; // 查询字段</span><br><span class="line"><span class="variable">$query2</span> = $_SERVER[<span class="string">'SCRIPT_NAME'</span>].<span class="variable">$SERVER</span>[<span class="string">'QUERY_STRING'</span>]; // 也可以这样获取查询字段</span><br><span class="line">// 判断访问的是否是跳转的域名，不是则进行跳转</span><br><span class="line"><span class="keyword">if</span> (strpos($_SERVER[<span class="string">'HTTP_HOST'</span>], <span class="variable">$host</span>) === <span class="literal">false</span>) &#123;</span><br><span class="line">	header(<span class="string">'HTTP/1.1 301 Moved Permanently'</span>);</span><br><span class="line">	header(<span class="string">'Location: http://'</span>.<span class="variable">$host</span>.<span class="variable">$query</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>情况是这样的，有两个域名（例如www.ab.com，www.cd.com），都是使用同一个ftp，即ping的返回ip是一样的，一开始直接使用header进行跳转时一直是重定向循环，然后在网上找到一段重定向代码，发现需要对$_SERVER[‘HTTP_HOST’]进行判断，而调试输出$_SERVER之后发现两个域名的HTTP_HOST是一样的（例如两个域名的HTTP_HOST都是www.cd.com，这样不管怎样跳转都是重定向循环），叫客户在域名面板配置好（具体操作不知道），在输出$_SERVER之后两个域名的HTTP_HOST不一样了，终于可以进行判断并跳转了。<br>本来很简单的一个重定向，却因为域名没有设置好，弄了半天：(</p>
+<p>还有另一个方法是使用.htaccess文件。<br>其实之前有试过，但是也是因为HTTP_HOST问题出现重定向循环，更改域名设置后应该可以了。<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">On</span></span><br><span class="line"><span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%&#123;HTTP_HOST&#125;</span> !www.old.com$<span class="sqbracket"> [NC]</span></span><br><span class="line"><span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ http://www.new.com/<span class="number">$1</span><span class="sqbracket"> [R=301,L]</span></span><br></pre></td></tr></table></figure></p>
+<p>注意要确定.htaccess文件可用。</p>
+<p>参考链接<br><a href="http://www.lseventt.com/archives/986.html" target="_blank" rel="external">php完美实现多个域名指向同一网站的301转向</a><br><a href="http://www.williamlong.info/archives/372.html" target="_blank" rel="external">多个绑定多域名的PHP代码</a><br><a href="http://www.111cn.net/phper/apache/42188.htm" target="_blank" rel="external">.htaccess 301重定向详细教程</a><br><a href="http://php.net/manual/zh/reserved.variables.server.php" target="_blank" rel="external">PHP: $_SERVER</a></p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/PHP/">PHP</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/htaccess/">htaccess</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

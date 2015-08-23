@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › 两个HTML页面之间传值</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="项目中需要在两个html页面间进行传值，javascript可以很简单的实现。a.html123456789&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&amp;gt;	&amp;lt;title&amp;gt;A&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;	&amp;lt;a href=&quot;b.html?value=1&quot;&amp;gt;Redirect to b.html&amp;lt;/a&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="两个HTML页面之间传值"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-06-25T13:37:58.000Z">June 25 2015</time>
+    
+    
+  
+    <h2 class="title">两个HTML页面之间传值</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>项目中需要在两个html页面间进行传值，javascript可以很简单的实现。<br><em>a.html</em><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>A<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"b.html?value=1"</span>&gt;</span>Redirect to b.html<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><em>b.html</em><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>B<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="actionscript"></span><br><span class="line">		<span class="keyword">var</span> url = location.search;</span><br><span class="line">		<span class="comment">//去掉问号</span></span><br><span class="line">		<span class="keyword">var</span> value = url.split(<span class="string">"?"</span>)[<span class="number">1</span>];</span><br><span class="line">		alert(value);</span><br><span class="line">		<span class="comment">//后面的参数取值可以对字符串进行操作获取</span></span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>html页面之间传递参数还有一些方法，不过不常用到，作个记录，具体看<a href="http://www.uedsc.com/javascript-html-get-value.html" target="_blank" rel="external">这里</a></p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/HTML/">HTML</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

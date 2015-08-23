@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › Wordpress根据国家IP自动跳转到不同页面</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="项目中需要根据访问者ip来为其自动跳转到不同页面，例如大陆用户访问自动跳转到另一个服务器，其他用户则不变。想到的方法有两种，一种是使用ip数据库来进行筛选，然后在php中使用header函数进行跳转，另一种是修改.htaccess文件（这个没实验过），还有网上说用javascript来获取浏览器语言来进行跳转。方法应该有很多，但是能力有限，最后还是使用别人开发的wordpress plugin来解决，真是惭愧啊：(">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Wordpress根据国家IP自动跳转到不同页面"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-07-27T13:56:35.000Z">July 27 2015</time>
+    
+    
+  
+    <h2 class="title">Wordpress根据国家IP自动跳转到不同页面</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>项目中需要根据访问者ip来为其自动跳转到不同页面，例如大陆用户访问自动跳转到另一个服务器，其他用户则不变。<br>想到的方法有两种，一种是使用ip数据库来进行筛选，然后在php中使用header函数进行跳转，另一种是修改.htaccess文件（这个没实验过），还有网上说用javascript来获取浏览器语言来进行跳转。<br>方法应该有很多，但是能力有限，最后还是使用别人开发的wordpress plugin来解决，真是惭愧啊：(</p>
+<a id="more"></a>
+<p>###GeoIP数据库<br>1.下载ip数据库等文件<br>Download <a href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz" target="_blank" rel="external">GeoLite Country (binary format)</a>, and extract the file GeoIP.dat.<br>Download <a href="http://www.maxmind.com/download/geoip/api/php/geoip.inc" target="_blank" rel="external">geoip.inc</a>.</p>
+<p>2.php跳转代码<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// include the php script</span><br><span class="line">include(<span class="string">"geoip.inc"</span>);</span><br><span class="line">// open the geoip database</span><br><span class="line"><span class="variable">$gi</span> = geoip_open(<span class="string">"GeoIP.dat"</span>,GEOIP_STANDARD);</span><br><span class="line">// <span class="keyword">to</span> get country code</span><br><span class="line"><span class="variable">$country</span>_code = geoip_country_code_by_addr(<span class="variable">$gi</span>, $_SERVER[<span class="string">'REMOTE_ADDR'</span>]);</span><br><span class="line">echo <span class="string">"Your country code is: $country_code \n"</span>;</span><br><span class="line">// <span class="keyword">to</span> get country name</span><br><span class="line"><span class="variable">$country</span>_name = geoip_country_name_by_addr(<span class="variable">$gi</span>, $_SERVER[<span class="string">'REMOTE_ADDR'</span>]);</span><br><span class="line">echo <span class="string">"Your country name is: $country_name \n"</span>;</span><br><span class="line">// close the database</span><br><span class="line">geoip_close(<span class="variable">$gi</span>);</span><br><span class="line">// redirect</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$country</span>_name === <span class="string">'china'</span>) &#123;</span><br><span class="line">	header(<span class="string">'Location: http://www.baidu.com'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码真是简洁而且实用啊。</p>
+<p>这段代码想要在wordpress中使用，一般是做成插件的形式，真是幸运已经有人做好了，不过插件的最后更新日期是2013年，可能会有问题，需要自己调试。</p>
+<p>代码出处：<a href="http://www.phpandstuff.com/articles/geoip-country-lookup-with-php" target="_blank" rel="external">GeoIP country lookup with PHP</a><br>wordpress插件：<a href="https://wordpress.org/plugins/geographical-redirect/" target="_blank" rel="external">Geo Redirect</a><br>插件github：<a href="https://github.com/ladrower/wordpress-geographical-redirect" target="_blank" rel="external">wordpress-geographical-redirect</a><br>非常感谢以上两位作者。</p>
+<p>PS：在使用插件时，后台填写static url要注意填写完整的跳转地址，例如<code>http://www.example.com</code>，如果只填写www.example.com的话，最后浏览器地址栏里会得到localhost/wordpress/www.example.com，这样当然是404了。</p>
+<p>另外也有其他的ip数据库可以使用，例如：<a href="http://www.ip2location.com/free/visitor-redirection" target="_blank" rel="external">ip2location</a>。<br>下面是一段生成的代码示例<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require_once <span class="string">'IP2Location.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$loc</span> = new IP2Location(<span class="string">'databases/IP-COUNTRY.BIN'</span>, IP2Location::FILE_IO);</span><br><span class="line"><span class="variable">$record</span> = <span class="variable">$loc-</span>&gt;lookup($_SERVER[<span class="string">'REMOTE_ADDR'</span>], IP2Location::ALL);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$record</span> == <span class="string">'CN'</span>) &#123;</span><br><span class="line">	header(<span class="string">'HTTP/1.1 301 Moved Permanently'</span>);</span><br><span class="line">	header(<span class="string">'Location: http://www.baidu.com'</span>);</span><br><span class="line">	exit;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>###修改.htaccess文件<br>这个我是没有试过的，只是在stackoverflow找到了这样的回答（其实也是调用了GepIP），做个记录。<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GeoIPEnable</span> <span class="literal">On</span></span><br><span class="line"><span class="keyword">GeoIPDBFile</span> /path/to/GeoIP.dat</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start Redirecting countries</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Canada</span></span><br><span class="line"><span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">on</span></span><br><span class="line"><span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%&#123;ENV:GEOIP_COUNTRY_CODE&#125;</span> ^CA$</span><br><span class="line"><span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ http://ca.abcd.com<span class="number">$1</span><span class="sqbracket"> [L]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># India</span></span><br><span class="line"><span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">on</span></span><br><span class="line"><span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%&#123;ENV:GEOIP_COUNTRY_CODE&#125;</span> ^IN$</span><br><span class="line"><span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ http://in.abcd.com<span class="number">$1</span><span class="sqbracket"> [L]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># etc etc etc...</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>参考链接<br><a href="http://www.wpsolver.com/geo-redirect-wordpress-plugins-for-geo-targeting/" target="_blank" rel="external">4 WordPress Plugins for Geo Targeting</a><br><a href="http://dev.maxmind.com/geoip/legacy/geolite/" target="_blank" rel="external">GeoLite Legacy Downloadable Databases</a><br><a href="http://stackoverflow.com/questions/9838344/how-to-redirect-domain-according-to-country-ip-address" target="_blank" rel="external">how to redirect domain according to country IP address</a><br><a href="http://www.php.net/manual/en/book.geoip.php" target="_blank" rel="external">Geo IP Location</a><br><a href="https://forums.digitalpoint.com/threads/htaccess-geo-country-ip-redirect-script.153845/" target="_blank" rel="external">.htaccess Geo Country / IP Redirect Script</a></p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/PHP/">PHP</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/wordpress/">wordpress</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

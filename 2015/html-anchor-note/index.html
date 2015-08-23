@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › HTML跳转到有锚点的网页后自动调整位置</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="今天任务中有这样一个小的需求，假如有a、b两个页面，b有锚点，从a上点击链接到b（链接为b页面内容的某个锚点）后，由于b页面有一个保持固定位置的头部，所以在显示锚点内容会出现不完整或者被头部挡住了。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="HTML跳转到有锚点的网页后自动调整位置"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-08-13T13:41:27.000Z">August 13 2015</time>
+    
+    
+  
+    <h2 class="title">HTML跳转到有锚点的网页后自动调整位置</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>今天任务中有这样一个小的需求，假如有a、b两个页面，b有锚点，从a上点击链接到b（链接为b页面内容的某个锚点）后，由于b页面有一个保持固定位置的头部，所以在显示锚点内容会出现不完整或者被头部挡住了。</p>
+<a id="more"></a>
+<p>也没想到什么好的办法，最后是用javascript里面的setTimeout函数来实现，就是在跳转到b页面后，经过一个比较短的时间来自动进行对页面位置进行调整。</p>
+<p>a.html<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>A<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line">		<span class="tag">a</span> <span class="rules">&#123;<span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#00f</span></span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">36px</span></span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>; <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;&#125;</span></span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"b.html#anchor2"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span>link to anchor2<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"b.html#anchor3"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span>link to anchor3<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"b.html#anchor4"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span>link to anchor4<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>b.html<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"content-type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>B<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line">		<span class="class">.header</span> <span class="rules">&#123;<span class="rule"><span class="attribute">max-width</span>:<span class="value"> <span class="number">700px</span></span></span>; <span class="rule"><span class="attribute">min-height</span>:<span class="value"> <span class="number">150px</span></span></span>; <span class="rule"><span class="attribute">max-height</span>:<span class="value"> <span class="number">150px</span></span></span>; <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#dd6</span></span></span>; <span class="rule"><span class="attribute">position</span>:<span class="value"> fixed</span></span>; <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">300px</span></span></span>;&#125;</span></span><br><span class="line">		<span class="class">.header</span> <span class="tag">li</span> <span class="rules">&#123;<span class="rule"><span class="attribute">list-style</span>:<span class="value"> none</span></span>; <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>; <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">150px</span></span></span>; <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> <span class="number">50px</span></span></span>;&#125;</span></span><br><span class="line">		<span class="class">.testdiv</span> <span class="rules">&#123;<span class="rule"><span class="attribute">min-height</span>:<span class="value"> <span class="number">400px</span></span></span>; <span class="rule"><span class="attribute">max-height</span>:<span class="value"> <span class="number">400px</span></span></span>; <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">20px</span></span></span>; <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#e71</span></span></span>; <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>; <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">400px</span></span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">36px</span></span></span>; <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;&#125;</span></span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-1.11.3.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="javascript"></span><br><span class="line">		$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			$(<span class="string">'a[href*="#"]'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">				<span class="comment">// e.preventDefault();</span></span><br><span class="line"></span><br><span class="line">				<span class="keyword">var</span> target = <span class="keyword">this</span>.hash;</span><br><span class="line">				<span class="keyword">var</span> $target = $(target);</span><br><span class="line">				<span class="comment">// 这个是头部挡住锚点部分的高度</span></span><br><span class="line">				<span class="keyword">var</span> headerHeight = <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line">				$(<span class="string">'html, body'</span>).stop().animate(&#123;</span><br><span class="line">					<span class="string">'scrollTop'</span>: $target.offset().top - headerHeight</span><br><span class="line">				&#125;, <span class="number">900</span>, <span class="string">'swing'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="built_in">window</span>.location.hash = target;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 当从其他链接过来之后再重新执行滚动，保证锚点位置正确</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">window</span>.location.hash) &#123;</span><br><span class="line">				setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="keyword">var</span> target = <span class="built_in">window</span>.location.hash;</span><br><span class="line">					<span class="keyword">var</span> $target = $(target);</span><br><span class="line">					<span class="keyword">var</span> headerHeight = <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line">					$(<span class="string">'html, body'</span>).stop().animate(&#123;</span><br><span class="line">						<span class="string">'scrollTop'</span>: $target.offset().top - headerHeight</span><br><span class="line">					&#125;, <span class="number">900</span>, <span class="string">'swing'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">						<span class="built_in">window</span>.location.hash = target;</span><br><span class="line">					&#125;);</span><br><span class="line">				&#125;, <span class="number">100</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#anchor1"</span>&gt;</span>anchor1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#anchor2"</span>&gt;</span>anchor2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#anchor3"</span>&gt;</span>anchor3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#anchor4"</span>&gt;</span>anchor4<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"testdiv"</span> <span class="attribute">id</span>=<span class="value">"anchor1"</span>&gt;</span>anchor1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"testdiv"</span> <span class="attribute">id</span>=<span class="value">"anchor2"</span>&gt;</span>anchor2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"testdiv"</span> <span class="attribute">id</span>=<span class="value">"anchor3"</span>&gt;</span>anchor3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"testdiv"</span> <span class="attribute">id</span>=<span class="value">"anchor4"</span>&gt;</span>anchor4<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"testdiv"</span>&gt;</span>blank<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"testdiv"</span>&gt;</span>blank<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这个方法比较笨：)</p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/HTML/">HTML</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/javascript/">javascript</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

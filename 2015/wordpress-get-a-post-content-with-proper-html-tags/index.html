@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › WordPress返回带HTML标签的内容</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="今天遇到一个小需求：在一篇文章显示另一篇文章的内容。实现：添加一个shortcode，然后在文章中调用，shortcode需要返回带html标签的内容。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="WordPress返回带HTML标签的内容"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-08-18T13:07:46.000Z">August 18 2015</time>
+    
+    
+  
+    <h2 class="title">WordPress返回带HTML标签的内容</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>今天遇到一个小需求：在一篇文章显示另一篇文章的内容。<br>实现：添加一个shortcode，然后在文章中调用，shortcode需要返回带html标签的内容。</p>
+<a id="more"></a>
+<p>functions.php中添加<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> getAnotherPostContent(<span class="variable">$atts</span>) &#123;</span><br><span class="line">	<span class="variable">$atts</span> = shortcode_atts(array(</span><br><span class="line">		<span class="string">'post_id'</span> =&gt; -<span class="number">1</span>,</span><br><span class="line">	), <span class="variable">$atts</span>);</span><br><span class="line"></span><br><span class="line">	<span class="variable">$post</span> = get_post(<span class="variable">$atts</span>[<span class="string">'post_id'</span>]);</span><br><span class="line">	<span class="variable">$content</span> = <span class="variable">$post-</span>&gt;post_content;</span><br><span class="line"></span><br><span class="line">	if (<span class="variable">$content</span>) &#123;</span><br><span class="line">		// 对the_content进行过滤，不然返回的是不带html标签的内容。</span><br><span class="line">		<span class="variable">$content</span> = apply_filters (<span class="string">"the_content"</span>, <span class="variable">$content</span>);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		<span class="variable">$content</span> = <span class="string">''</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return <span class="variable">$content</span>;</span><br><span class="line">&#125;</span><br><span class="line">add_shortcode( <span class="string">'showpost'</span>, <span class="string">'getAnotherPostContent'</span> );</span><br></pre></td></tr></table></figure></p>
+<p>最后在文章中调用就行，例如：[showpost post_id=”1”]。</p>
+<p>参考链接：<br><a href="https://wordpress.org/support/topic/get-a-post-content-with-proper-html-tags" target="_blank" rel="external">Get a post content with proper html tags</a><br><a href="https://codex.wordpress.org/Function_Reference/apply_filters" target="_blank" rel="external">apply filters</a><br><a href="https://codex.wordpress.org/Function_Reference/add_shortcode" target="_blank" rel="external">add shortcode</a></p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/PHP/">PHP</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/wordpress/">wordpress</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

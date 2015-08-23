@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › Hexo从3.0.0升级到3.1.1之后代码高亮失效</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="今天把系统重装了，安装了hexo并把文章同步之后，发现代码高亮失效了，具体就是代码行数只有1,代码有些关键字不能高亮显示，整个样式为文本，并没对内容进行解析。一开始还以为是主题原因，但是试过其他主题之后还是一样，最后觉得应该是_config.yml的问题，应该在恢复备份的时候直接覆盖了，一些配置没有填好。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo从3.0.0升级到3.1.1之后代码高亮失效"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-08-23T06:03:41.000Z">August 23 2015</time>
+    
+    
+  
+    <h2 class="title">Hexo从3.0.0升级到3.1.1之后代码高亮失效</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>今天把系统重装了，安装了hexo并把文章同步之后，发现代码高亮失效了，具体就是代码行数只有1,代码有些关键字不能高亮显示，整个样式为文本，并没对内容进行解析。<br>一开始还以为是主题原因，但是试过其他主题之后还是一样，最后觉得应该是_config.yml的问题，应该在恢复备份的时候直接覆盖了，一些配置没有填好。</p>
+<a id="more"></a>
+<p>之后又重新建立一个文件夹，并<code>hexo init</code>之后，观察初始化的_config.yml，发现填漏了一个配置项<code>auto_detect: true</code>，这个选项应该指开启检测代码高亮，加上之后，代码高亮显示正常。<br>具体配置<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">highlight</span>:</span><br><span class="line">  <span class="attribute">enable</span>: true</span><br><span class="line">  <span class="attribute">line_number</span>: true</span><br><span class="line">  <span class="attribute">auto_detect</span>: true</span><br><span class="line">  <span class="attribute">tab_replace</span>:</span><br></pre></td></tr></table></figure></p>
+<p>PS：tab_replace是指把tab替换，如果是2空格的话，直接冒号后面加上3个空格，不要填2，因为这样会直接替换为’2’的。</p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/Blog/">Blog</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › WooCommerce插件下为Products页面移除Sidebar</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="今天找了一下午，终于找到了移除sidebar的代码了。。。一开始还以为是page的template没设置好。加载product-content的文件是在：wp-content/themes/theme52481/includes/shop-functions.php">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="WooCommerce插件下为Products页面移除Sidebar"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-07-06T13:18:03.000Z">July 06 2015</time>
+    
+    
+  
+    <h2 class="title">WooCommerce插件下为Products页面移除Sidebar</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>今天找了一下午，终于找到了移除sidebar的代码了。。。一开始还以为是page的template没设置好。<br>加载product-content的文件是在：<br><code>wp-content/themes/theme52481/includes/shop-functions.php</code></p>
+<a id="more"></a>
+<p>找到这一块<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function tm_open_shop_content_wrappers()&#123;</span><br><span class="line">	echo '&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"motopress-wrapper content-holder clearfix woocommerce"</span>&gt;</span><br><span class="line">			&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"container"</span>&gt;</span><br><span class="line">				&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"row"</span>&gt;</span><br><span class="line">					&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"span12"</span> data-motopress-<span class="class"><span class="keyword">type</span>=</span><span class="string">"static"</span> data-motopress-static-file=<span class="string">"static/static-title.php"</span>&gt;';</span><br><span class="line">						echo get_template_part(<span class="string">"static/static-title"</span>);</span><br><span class="line">	echo 			'&lt;/div&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"row"</span>&gt;</span><br><span class="line">					&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"' . cherry_get_layout_class( 'content' ) . '"</span> id=<span class="string">"content"</span>&gt;';</span><br><span class="line">&#125;</span><br><span class="line">function tm_close_shop_content_wrappers()&#123;</span><br><span class="line">	echo			'&lt;/div&gt;</span><br><span class="line">					&lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"sidebar ' . cherry_get_layout_class( 'sidebar' ) . '"</span> id=<span class="string">"sidebar"</span> data-motopress-<span class="class"><span class="keyword">type</span>=</span><span class="string">"static-sidebar"</span>  data-motopress-sidebar-file=<span class="string">"sidebar.php"</span>&gt;';</span><br><span class="line">						<span class="comment">//这里注释掉</span></span><br><span class="line">						<span class="comment">//get_sidebar();</span></span><br><span class="line">	echo			'&lt;/div&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;';</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/PHP/">PHP</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/wordpress/">wordpress</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

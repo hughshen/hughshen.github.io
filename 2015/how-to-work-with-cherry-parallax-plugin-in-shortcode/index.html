@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › 使用Cherry Parallax Plugin为Pages添加背景图片</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="首先需要安装cherry parallax plugin，可以到了这里下载：1.0.0，1.0.1。按照cherry framework的documentaction，shortcode应该是如下的写法123[cherry_parallax image=&quot;wp-content/uploads/../../image.jpg&quot; width=&quot;1920&quot; speed=&quot;2&quot; custom_class=&quot;custom-class&quot;]	Text[/cherry_parallax]">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="使用Cherry Parallax Plugin为Pages添加背景图片"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-06-29T14:19:52.000Z">June 29 2015</time>
+    
+    
+  
+    <h2 class="title">使用Cherry Parallax Plugin为Pages添加背景图片</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>首先需要安装cherry parallax plugin，可以到了这里下载：<a href="https://github.com/pioneer903/shirincafe/tree/6b817f6aa7f47b19f3b4c190c424994567ee8dbf/wp-content/plugins/cherry-parallax" target="_blank" rel="external">1.0.0</a>，<a href="https://github.com/happywithyou86/Wordpress_PCCO/tree/12728d462e992170f87b773c2caa78321bb67b76/wp-content/plugins/cherry-parallax" target="_blank" rel="external">1.0.1</a>。<br>按照cherry framework的<a href="http://www.templatemonster.com/help/quick-start-guide/wordpress-themes/master/index_en.html#introduction" target="_blank" rel="external">documentaction</a>，shortcode应该是如下的写法<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[cherry_parallax <span class="built_in">image</span>=<span class="string">"wp-content/uploads/../../image.jpg"</span> <span class="variable">width</span>=<span class="string">"1920"</span> speed=<span class="string">"2"</span> custom_class=<span class="string">"custom-class"</span>]</span><br><span class="line">	Text</span><br><span class="line">[/cherry_parallax]</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>但是不能正确显示，在chrome中使用F12发现标签中的data-img-url为空，说明图片地址为空，不能识别，应该是图片地址写错了，在查看插件包中的cherry-parallax.php文件（版本为1.0.0），找到其中的shortcode代码，其中有<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$args</span> = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'post_type'</span> =&gt; <span class="string">'attachment'</span>,</span><br><span class="line">    <span class="string">'post_mime_type'</span> =&gt;<span class="string">'image'</span>,</span><br><span class="line">    <span class="string">'post_status'</span> =&gt; <span class="string">'inherit'</span>,</span><br><span class="line">    <span class="string">'posts_per_page'</span> =&gt; -<span class="number">1</span>,</span><br><span class="line">);</span><br><span class="line"><span class="variable">$query</span>_images = new WP_Query( <span class="variable">$args</span> );</span><br><span class="line"><span class="keyword">if</span> ( <span class="variable">$query</span>_images-&gt;have_posts() ) &#123;</span><br><span class="line">  foreach ( <span class="variable">$query</span>_images-&gt;posts as <span class="variable">$item</span>) &#123; </span><br><span class="line">    <span class="variable">$filename</span> = wp_basename(<span class="variable">$item-</span>&gt;guid);</span><br><span class="line">    if(<span class="variable">$image</span> == <span class="variable">$filename</span>) <span class="variable">$image</span>_url = <span class="variable">$item-</span>&gt;guid;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>插件首先从数据库中读取特定类型的所有图片，然后与传递进来的图片地址进行比较，这里在进行比较之前先把图片地址的目录部分去掉了，只剩下文件名与扩展名，所以在shortcode里并不需要把目录加上，正确的写法应该是<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[cherry_parallax <span class="built_in">image</span>=<span class="string">"image.jpg"</span> <span class="variable">width</span>=<span class="string">"1920"</span> speed=<span class="string">"2"</span> custom_class=<span class="string">"custom-class"</span>]</span><br><span class="line">	Text</span><br><span class="line">[/cherry_parallax]</span><br></pre></td></tr></table></figure></p>
+<p>只需填写image文件名就行，不需填写目录。<br>想要把哪一部分内容添加背景图片，就写到shortcode里面就行，即Text部分。</p>
+<hr>
+<p>wordpress的shortcode是一个难点，需要多看看一些插件或者主题的shortcode部分，了解其是如何运作的。</p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/PHP/">PHP</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/wordpess/">wordpess</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
