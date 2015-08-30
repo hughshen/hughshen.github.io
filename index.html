@@ -51,6 +51,126 @@
   <article class="post">
   <header>
     
+    <time datetime="2015-08-30T09:03:19.000Z">August 30 2015</time>
+    
+    
+  
+    <h2 class="title"><a href="/2015/wordpress-get-posts-by-multiple-taxonomies-id/">WordPress获取多个自定义分类法下的文章</a></h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>主要还是使用WP_Query来获取，关键是args参数。</p>
+    
+  </div>
+  
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2015/wordpress-get-posts-by-multiple-taxonomies-id/#more" class="more-link">阅读全文</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  
+</article>
+
+
+  <article class="post">
+  <header>
+    
+    <time datetime="2015-08-30T08:49:05.000Z">August 30 2015</time>
+    
+    
+  
+    <h2 class="title"><a href="/2015/wordpress-get-page-children/">WordPress获取子页面</a></h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>获取子页面很简单，代码也不长，需要注意的变量的传递问题。</p>
+    
+  </div>
+  
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2015/wordpress-get-page-children/#more" class="more-link">阅读全文</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  
+</article>
+
+
+  <article class="post">
+  <header>
+    
+    <time datetime="2015-08-30T08:29:00.000Z">August 30 2015</time>
+    
+    
+  
+    <h2 class="title"><a href="/2015/wordpress-note-2/">WordPress笔记-2</a></h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <h3 id="对文件内容进行截取">对文件内容进行截取</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo mb_substr<span class="list">(<span class="keyword">get_the_content</span><span class="list">()</span>, <span class="number">0</span>, <span class="number">130</span>, <span class="quoted">'utf8</span>')</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+    
+  </div>
+  
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2015/wordpress-note-2/#more" class="more-link">阅读全文</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  
+</article>
+
+
+  <article class="post">
+  <header>
+    
+    <time datetime="2015-08-30T08:10:24.000Z">August 30 2015</time>
+    
+    
+  
+    <h2 class="title"><a href="/2015/setting-charset-in-htaccess/">在htaccess文件中设置字符集</a></h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>要求：网站首页访问index.html，但是charset不对，显示是乱码。<br>本来访问index.php文件是没问题的，所以可以在apache中使用<code>DirectoryIndex index.php index.html</code>来修改默认index文件，老严说可以使用htaccess文件来设置默认charset，google找到了类似的，作个记录。</p>
+    
+  </div>
+  
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2015/setting-charset-in-htaccess/#more" class="more-link">阅读全文</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  
+</article>
+
+
+  <article class="post">
+  <header>
+    
     <time datetime="2015-08-23T06:03:41.000Z">August 23 2015</time>
     
     
@@ -220,126 +340,6 @@
     <footer>
       <div class="alignleft">
         <a href="/2015/html-anchor-note/#more" class="more-link">阅读全文</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    
-  
-</article>
-
-
-  <article class="post">
-  <header>
-    
-    <time datetime="2015-08-11T15:10:12.000Z">August 11 2015</time>
-    
-    
-  
-    <h2 class="title"><a href="/2015/wordpress-custom-upload-file-mime/">WordPress自定义上传文件类型</a></h2>
-  
-
-
-  </header>
-  <div class="entry">
-    
-      <p>很简单！！<br>在functions.php文件中添加如下代码。</p>
-    
-  </div>
-  
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2015/wordpress-custom-upload-file-mime/#more" class="more-link">阅读全文</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    
-  
-</article>
-
-
-  <article class="post">
-  <header>
-    
-    <time datetime="2015-08-11T14:20:04.000Z">August 11 2015</time>
-    
-    
-  
-    <h2 class="title"><a href="/2015/php-301-redirect/">PHP实现301重定向</a></h2>
-  
-
-
-  </header>
-  <div class="entry">
-    
-      <p>php中实现301重定向挺简单的，代码也不复杂，无非就是对域名进行判断，不是新域名就使用header函数进行跳转，但是中途也出现一些问题，在此做个记录。</p>
-    
-  </div>
-  
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2015/php-301-redirect/#more" class="more-link">阅读全文</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    
-  
-</article>
-
-
-  <article class="post">
-  <header>
-    
-    <time datetime="2015-08-05T13:19:41.000Z">August 05 2015</time>
-    
-    
-  
-    <h2 class="title"><a href="/2015/yii-1-1-use-mailer/">Yii 1.1使用Mailer Extensions</a></h2>
-  
-
-
-  </header>
-  <div class="entry">
-    
-      <p>今天工作中需要用到php的发邮件功能，在网上找了一些资料，大多是使用写好的邮件类（没有安装邮件服务器），由于是在yii下，所以就使用官方的extensions了，也就是mailer。</p>
-    
-  </div>
-  
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2015/yii-1-1-use-mailer/#more" class="more-link">阅读全文</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    
-  
-</article>
-
-
-  <article class="post">
-  <header>
-    
-    <time datetime="2015-08-04T12:50:43.000Z">August 04 2015</time>
-    
-    
-  
-    <h2 class="title"><a href="/2015/search-by-post-excerpt-in-wordpress/">WordPress搜索添加自定义字段</a></h2>
-  
-
-
-  </header>
-  <div class="entry">
-    
-      <p>昨天工作需要修改wordpress搜索功能，就是在搜索时把post_excerpt也添加到查询当中。<br>用的是wordpress自带pre_get_posts的api，添加到add_action就行，想要添加其他自定义字段也是类似的。</p>
-    
-  </div>
-  
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2015/search-by-post-excerpt-in-wordpress/#more" class="more-link">阅读全文</a>
       </div>
       <div class="clearfix"></div>
     </footer>
