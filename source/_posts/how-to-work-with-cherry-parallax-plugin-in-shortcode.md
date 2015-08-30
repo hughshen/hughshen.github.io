@@ -2,7 +2,7 @@ title: 使用Cherry Parallax Plugin为Pages添加背景图片
 date: 2015-06-29 22:19:52
 categories: PHP
 tags:
-- wordpess
+- wordpress
 ---
 
 首先需要安装cherry parallax plugin，可以到了这里下载：[1.0.0](https://github.com/pioneer903/shirincafe/tree/6b817f6aa7f47b19f3b4c190c424994567ee8dbf/wp-content/plugins/cherry-parallax)，[1.0.1](https://github.com/happywithyou86/Wordpress_PCCO/tree/12728d462e992170f87b773c2caa78321bb67b76/wp-content/plugins/cherry-parallax)。
