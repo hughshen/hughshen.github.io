@@ -6,7 +6,7 @@ tags:
 - eclipse
 ---
 
-###到 [Github](https://github.com/winghc/hadoop2x-eclipse-plugin)下载文件并解压
+### 到 [Github](https://github.com/winghc/hadoop2x-eclipse-plugin)下载文件并解压
 然后进入 *release* 文件夹把2.6.0版本的复制到 *eclipse* 的插件文件夹就行
 
 <!--more-->
@@ -22,7 +22,7 @@ sudo cp hadoop2x-eclipse-plugin/release/hadoop-eclipse-plugin-2.6.0.jar /usr/lib
 > 4.在Map/Reduce Locations右键=====>new hadoop locations
 > 5.host填写localhost或者其他ip，map/red====>port:50020，hdfs====>port:9000
 
-###自行编译（失败，做个记录）
+### 自行编译（失败，做个记录）
 ```bash
 cd src/contrib/eclipse-plugin
 ant jar -Dversion=2.6.0 -Dhadoop.version=2.6.0 -Declipse.home=/usr/lib/eclipse -Dhadoop.home=/usr/local/hadoop

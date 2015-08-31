@@ -5,12 +5,12 @@ tags:
   - R
 ---
 
-###No such file or directory
+### No such file or directory
 解决：找到 *RStudio* 的启动文件，然后修改其用户权限 *chmod   u+s   filename*；或者在建立 *workspace* 文件夹的时候，直接建立，不要使用 *sudo*
 
 <!--more-->
 
-###install.packages()
+### install.packages()
 例如显示 *installation of package 'XML' had non-zero exit status* 或者 *package 'rvest' is not available (for R version 3.1.3)* 等等
 
 解决：原因是这些包依赖了特别的库，具体参考 [1](http://www.linuxidc.com/Linux/2012-07/65078.htm)，[2](http://rattle.togaware.com/rattle-install-troubleshooting.html)

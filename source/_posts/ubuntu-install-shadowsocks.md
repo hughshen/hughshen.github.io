@@ -6,7 +6,7 @@ tags:
 - shadowsocks
 ---
 
-###服务端安装（Ubuntu1404），[具体](https://github.com/shadowsocks/shadowsocks )
+### 服务端安装（Ubuntu1404），[具体](https://github.com/shadowsocks/shadowsocks )
 ```bash
 ssh <username>@<ip_address> -p <port> #ssh登录vps
 apt-get update
@@ -39,7 +39,7 @@ ssserver -c /etc/shadowsocks/config.json --user nobody -d start #后台运行
 /usr/local/bin/ssserver –c /etc/shadowsocks/config.json
 ```
 
-###客户端安装（Ubuntu1404），项目[地址](https://github.com/librehat/shadowsocks-qt5)
+### 客户端安装（Ubuntu1404），项目[地址](https://github.com/librehat/shadowsocks-qt5)
 ```bash
 sudo add-apt-repository ppa:hzwhuang/ss-qt5
 sudo apt-get update

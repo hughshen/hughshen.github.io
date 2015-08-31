@@ -7,7 +7,7 @@ tags:
 ---
 
 转载于：[http://www.oseye.net/user/199/blog/100](http://www.oseye.net/user/199/blog/100)
-###.htaccess正则表达式
+### .htaccess正则表达式
 
 <!--more-->
 
@@ -60,7 +60,7 @@ tags:
 `-f` 测试字符串是否是已存在的文件
 `-s` 测试字符串所指文件是否有“非零”值
 
-###HTTP协议重定向编码
+### HTTP协议重定向编码
 301 – Moved Permanently
 302 – Moved Temporarily
 403 – Forbidden

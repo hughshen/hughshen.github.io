@@ -10,14 +10,14 @@ tags:
 
 <!--more-->
 
-###java.net.ConnectException
+### java.net.ConnectException
 需要先打开 *namenode* 
 ```
 sbin/start-dfs.sh
 sbin/start-yarn.sh
 ```
 
-###[ls,put,get...]: No such file or directory
+### [ls,put,get...]: No such file or directory
 注意不要漏了反斜线，[具体](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html#Execution)
 ```
 bin/hdfs dfs -mkdir /user
@@ -25,7 +25,7 @@ bin/hdfs dfs -mkdir /user/<username>
 bin/hdfs dfs -ls /
 ```
 
-###Unable to load native-hadoop library for your platform
+### Unable to load native-hadoop library for your platform
 目前还未解决...
 
 

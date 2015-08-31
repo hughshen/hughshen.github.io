@@ -5,7 +5,7 @@ tags:
 - wordpress
 ---
 
-###获取post中的特色图片
+### 获取post中的特色图片
 ```
 <?php
 $thumbnail_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
@@ -17,7 +17,7 @@ echo $thumbnail_image_url[0];
 
 其中thumbnail可以替换成‘medium’，‘large’，‘full’，分别代表获得图片的尺寸，还可以使用array(width,height)来指定尺寸，注意只能获取post的特色图片，如果没有设定特色图片的话是获取不到的
 
-###获取post中所包含的图片
+### 获取post中所包含的图片
 在functions.php文件中加入
 ```
 function get_first_image_url($post_content = '') {
