@@ -6,7 +6,7 @@
   <title>Hugh&#39;Blog › Ubuntu1404下安装LAMP</title>
   <meta name="author" content="Hugh Shen">
   
-  <meta name="description" content="###安装Apache21sudo apt-get install apache2
+  <meta name="description" content="安装Apache21sudo apt-get install apache2
 在浏览中输入 localhost ，显示 It’s works! 表示成功。">
   
   
@@ -64,15 +64,15 @@
   </header>
   <div class="entry">
     
-      <p>###安装Apache2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2</span><br></pre></td></tr></table></figure></p>
+      <h3 id="安装Apache2">安装Apache2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2</span><br></pre></td></tr></table></figure>
 <p>在浏览中输入 <em>localhost</em> ，显示 <em>It’s works!</em> 表示成功。</p>
 <a id="more"></a>
-<p>###安装PHP5<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5 libapache2-mod-php5</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装PHP5">安装PHP5</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5 libapache2-mod-php5</span><br></pre></td></tr></table></figure>
 <p>在 <em>/var/www/html/</em> 建立一个测试文件，查看 <em>PHP</em> 与 <em>Apache</em> 是否一起工作。</p>
 <h3 id="安装Mysql">安装Mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server <span class="comment">#一般会要求输入密码</span></span><br><span class="line">mysql -u root -p <span class="comment">#测试mysql是否安装成功</span></span><br><span class="line">show databases;</span><br></pre></td></tr></table></figure>
-<p>###配置PHPMyadmin<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-auth-mysql php5-mysql phpmyadmin</span><br><span class="line"><span class="comment"># 建立phpmyadmin的软链接</span></span><br><span class="line">sudo ln <span class="operator">-s</span> /usr/share/phpmyadmin/ /var/www/html/</span><br></pre></td></tr></table></figure></p>
-<p>###PHP的一些扩展<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5 php5-cgi php5-mysql php5-curl php5-gd php5-idn php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-mhash php5-ming php5-pspell php5-recode php5-snmp php5-tidy php5-xmlrpc php5-sqlite php5-xsl</span><br></pre></td></tr></table></figure></p>
-<p>###中途遇到的问题<br>1.<em>Could not reliably determine the server’s fully qualified domain name, using 127.0.1.1. Set the ‘ServerName’ directive globally to suppress this message</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apache2/apache2.conf</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置PHPMyadmin">配置PHPMyadmin</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-auth-mysql php5-mysql phpmyadmin</span><br><span class="line"><span class="comment"># 建立phpmyadmin的软链接</span></span><br><span class="line">sudo ln <span class="operator">-s</span> /usr/share/phpmyadmin/ /var/www/html/</span><br></pre></td></tr></table></figure>
+<h3 id="PHP的一些扩展">PHP的一些扩展</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5 php5-cgi php5-mysql php5-curl php5-gd php5-idn php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-mhash php5-ming php5-pspell php5-recode php5-snmp php5-tidy php5-xmlrpc php5-sqlite php5-xsl</span><br></pre></td></tr></table></figure>
+<h3 id="中途遇到的问题">中途遇到的问题</h3><p>1.<em>Could not reliably determine the server’s fully qualified domain name, using 127.0.1.1. Set the ‘ServerName’ directive globally to suppress this message</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apache2/apache2.conf</span><br></pre></td></tr></table></figure></p>
 <p>在 <em>ServerRoot</em> 下面添加 <em>ServerName 127.0.0.1</em></p>
 <p>2.缺少 <em>mcrypt</em> 扩展。请检查 PHP 配置。<br>注：<em>mcrypt</em> 是 <em>php</em> 里面重要的加密支持扩展库，可以实现加密解密功能，就是既能将明文加密，也可以密文还原。<br>在 <em>/etc/php5/apache2/conf.d/</em> 文件夹下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5-mcrypt <span class="comment">#安转了的话就不用</span></span><br><span class="line">sudo ln <span class="operator">-s</span> ../../mods-available/mcrypt.ini <span class="number">20</span>-mcrypt.ini</span><br></pre></td></tr></table></figure></p>
 <p>注意 <em>ini</em> 文件下的 <em>;priority</em> 值</p>

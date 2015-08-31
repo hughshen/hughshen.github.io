@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hugh&#39;Blog › Hadoop使用笔记</title>
+  <title>Hugh&#39;Blog › OpenCart修改上传图片大小限制</title>
   <meta name="author" content="Hugh Shen">
   
-  <meta name="description" content="name与data的clusterID不一样导致错误Incompatible clusterIDs具体到 name 和 data 文件夹里把 VERSION 里面的 clusterID 修改为一致">
+  <meta name="description" content="修改filemanager.php的上传代码，文件一般位于admin\controller\common\filemanager.php
+具体是修改里面的size值。12if ($this-&amp;gt;request-&amp;gt;files[&#39;image&#39;][&#39;size&#39;] &amp;gt; 300000) &amp;#123;$json[&#39;error&#39;] = $this-&amp;gt;language-&amp;gt;get(&#39;error_file_size&#39;);">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hadoop使用笔记"/>
+  <meta property="og:title" content="OpenCart修改上传图片大小限制"/>
   <meta property="og:site_name" content="Hugh&#39;Blog"/>
 
   
@@ -52,22 +53,21 @@
 	<div id="post-content"><article class="post">
   <header>
     
-    <time datetime="2015-04-21T12:06:26.000Z">April 21 2015</time>
+    <time datetime="2015-08-31T13:41:20.000Z">August 31 2015</time>
     
     
   
-    <h2 class="title">Hadoop使用笔记</h2>
+    <h2 class="title">OpenCart修改上传图片大小限制</h2>
   
 
 
   </header>
   <div class="entry">
     
-      <h3 id="name与data的clusterID不一样导致错误Incompatible_clusterIDs">name与data的clusterID不一样导致错误Incompatible clusterIDs</h3><p>具体到 <em>name</em> 和 <em>data</em> 文件夹里把 <em>VERSION</em> 里面的 <em>clusterID</em> 修改为一致</p>
+      <p>修改filemanager.php的上传代码，文件一般位于<code>admin\controller\common\filemanager.php</code></p>
+<p>具体是修改里面的size值。<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$this-</span>&gt;request-&gt;files[<span class="string">'image'</span>][<span class="string">'size'</span>] &gt; <span class="number">300000</span>) &#123;</span><br><span class="line"><span class="variable">$json</span>[<span class="string">'error'</span>] = <span class="variable">$this-</span>&gt;language-&gt;get(<span class="string">'error_file_size'</span>);</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h3 id="java-net-ConnectException">java.net.ConnectException</h3><p>需要先打开 <em>namenode</em><br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/<span class="built_in">start</span>-dfs.sh</span><br><span class="line">sbin/<span class="built_in">start</span>-yarn.sh</span><br></pre></td></tr></table></figure></p>
-<h3 id="[ls,put,get…]:_No_such_file_or_directory">[ls,put,get…]: No such file or directory</h3><p>注意不要漏了反斜线，<a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html#Execution" target="_blank" rel="external">具体</a><br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bin/hdfs </span>dfs -mkdir /user</span><br><span class="line"><span class="keyword">bin/hdfs </span>dfs -mkdir /user/&lt;username&gt;</span><br><span class="line"><span class="keyword">bin/hdfs </span>dfs -ls /</span><br></pre></td></tr></table></figure></p>
-<h3 id="Unable_to_load_native-hadoop_library_for_your_platform">Unable to load native-hadoop library for your platform</h3><p>目前还未解决…</p>
+<p>参考链接<br><a href="http://forum.opencart.com/viewtopic.php?t=52004" target="_blank" rel="external">File Picture Upload OpenCart 1.5.1.3.1</a></p>
 
     
   </div>
@@ -77,13 +77,13 @@
 	
   
   <div class="categories">
-    <a href="/categories/Note/">Note</a>
+    <a href="/categories/PHP/">PHP</a>
   </div>
 
 	
   
   <div class="tags">
-    <a href="/tags/hadoop/">hadoop</a>
+    <a href="/tags/opencart/">opencart</a>
   </div>
 
 

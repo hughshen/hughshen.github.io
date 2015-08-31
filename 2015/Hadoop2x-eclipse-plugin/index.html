@@ -6,7 +6,7 @@
   <title>Hugh&#39;Blog › Hadoop2x-eclipse-plugin编译</title>
   <meta name="author" content="Hugh Shen">
   
-  <meta name="description" content="###到 Github下载文件并解压然后进入 release 文件夹把2.6.0版本的复制到 eclipse 的插件文件夹就行">
+  <meta name="description" content="到 Github下载文件并解压然后进入 release 文件夹把2.6.0版本的复制到 eclipse 的插件文件夹就行">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,14 +63,14 @@
   </header>
   <div class="entry">
     
-      <p>###到 <a href="https://github.com/winghc/hadoop2x-eclipse-plugin" target="_blank" rel="external">Github</a>下载文件并解压<br>然后进入 <em>release</em> 文件夹把2.6.0版本的复制到 <em>eclipse</em> 的插件文件夹就行</p>
+      <h3 id="到_Github下载文件并解压">到 <a href="https://github.com/winghc/hadoop2x-eclipse-plugin" target="_blank" rel="external">Github</a>下载文件并解压</h3><p>然后进入 <em>release</em> 文件夹把2.6.0版本的复制到 <em>eclipse</em> 的插件文件夹就行</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp hadoop2x-eclipse-plugin/release/hadoop-eclipse-plugin-<span class="number">2.6</span>.<span class="number">0</span>.jar /usr/lib/eclipse/plugins/</span><br></pre></td></tr></table></figure>
 <p><em>/usr/lib/eclipse/plugins/</em> 在 <em>eclipse</em> 安装目录下<br>安装完之后打开 <em>eclipse</em> 进行设置</p>
 <blockquote>
 <p>1.打开window===&gt;prefernces,找到Hadoop Map/Reduce选项卡<br>2.配置hadoop installation directory目录，指向hadoop的安装目录<br>3.打开window====&gt;show view====&gt;other，找到Map/Reduce Locations，使其显示<br>4.在Map/Reduce Locations右键=====&gt;new hadoop locations<br>5.host填写localhost或者其他ip，map/red====&gt;port:50020，hdfs====&gt;port:9000</p>
 </blockquote>
-<p>###自行编译（失败，做个记录）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src/contrib/eclipse-plugin</span><br><span class="line">ant jar -Dversion=<span class="number">2.6</span>.<span class="number">0</span> -Dhadoop.version=<span class="number">2.6</span>.<span class="number">0</span> -Declipse.home=/usr/lib/eclipse -Dhadoop.home=/usr/<span class="built_in">local</span>/hadoop</span><br></pre></td></tr></table></figure></p>
+<h3 id="自行编译（失败，做个记录）">自行编译（失败，做个记录）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src/contrib/eclipse-plugin</span><br><span class="line">ant jar -Dversion=<span class="number">2.6</span>.<span class="number">0</span> -Dhadoop.version=<span class="number">2.6</span>.<span class="number">0</span> -Declipse.home=/usr/lib/eclipse -Dhadoop.home=/usr/<span class="built_in">local</span>/hadoop</span><br></pre></td></tr></table></figure>
 <p>编译成功的话文件会在 <em>${hadoop2x-eclipse-plugin}/build/contrib/eclipse-plugin/hadoop-eclipse-plugin-2.4.1.jar</em>。<br><strong>说明</strong></p>
 <blockquote>
 <p>1.version: plugin版本<br>2.hadoop.version: 需要编译的的hadoop版本<br>3.eclipse.home: eclipse安装路径，这里是 /usr/lib/eclipse，参考4（需要手动安装的eclipse，通过命令行一键安装的不行？）<br>4.hadoop.home: hadoop安装路径，这里是 /usr/local/hadoop</p>

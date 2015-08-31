@@ -6,7 +6,7 @@
   <title>Hugh&#39;Blog › R使用笔记</title>
   <meta name="author" content="Hugh Shen">
   
-  <meta name="description" content="###No such file or directory解决：找到 RStudio 的启动文件，然后修改其用户权限 chmod   u+s   filename；或者在建立 workspace 文件夹的时候，直接建立，不要使用 sudo">
+  <meta name="description" content="No such file or directory解决：找到 RStudio 的启动文件，然后修改其用户权限 chmod   u+s   filename；或者在建立 workspace 文件夹的时候，直接建立，不要使用 sudo">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,9 +63,9 @@
   </header>
   <div class="entry">
     
-      <p>###No such file or directory<br>解决：找到 <em>RStudio</em> 的启动文件，然后修改其用户权限 <em>chmod   u+s   filename</em>；或者在建立 <em>workspace</em> 文件夹的时候，直接建立，不要使用 <em>sudo</em></p>
+      <h3 id="No_such_file_or_directory">No such file or directory</h3><p>解决：找到 <em>RStudio</em> 的启动文件，然后修改其用户权限 <em>chmod   u+s   filename</em>；或者在建立 <em>workspace</em> 文件夹的时候，直接建立，不要使用 <em>sudo</em></p>
 <a id="more"></a>
-<p>###install.packages()<br>例如显示 <em>installation of package ‘XML’ had non-zero exit status</em> 或者 <em>package ‘rvest’ is not available (for R version 3.1.3)</em> 等等</p>
+<h3 id="install-packages()">install.packages()</h3><p>例如显示 <em>installation of package ‘XML’ had non-zero exit status</em> 或者 <em>package ‘rvest’ is not available (for R version 3.1.3)</em> 等等</p>
 <p>解决：原因是这些包依赖了特别的库，具体参考 <a href="http://www.linuxidc.com/Linux/2012-07/65078.htm" target="_blank" rel="external">1</a>，<a href="http://rattle.togaware.com/rattle-install-troubleshooting.html" target="_blank" rel="external">2</a></p>
 <blockquote>
 <ul>
