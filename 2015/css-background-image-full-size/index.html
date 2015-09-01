@@ -6,7 +6,8 @@
   <title>Hugh&#39;Blog › CSS背景图片铺满</title>
   <meta name="author" content="Hugh Shen">
   
-  <meta name="description" content="想要把一张图片作为背景图，由于图片太大，总是不能完全显示，只能显示一部分，google之，原来是background-size没设置好，做个记录。具体参考1234body &amp;#123;    background: url(&quot;bg.jpg&quot;) no-repeat;    background-siz">
+  <meta name="description" content="想要把一张图片作为背景图，由于图片太大，总是不能完全显示，只能显示一部分，google之，原来是background-size没设置好，做个记录。具体参考1234body &amp;#123;    background: url(&quot;bg.jpg&quot;) no-repeat;    background-size: 100% 100%;&amp;#125;
+size用来获取背景图片，100%是把整张图片铺满背景">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -65,6 +66,7 @@
     
       <p>想要把一张图片作为背景图，由于图片太大，总是不能完全显示，只能显示一部分，google之，原来是background-size没设置好，做个记录。具体<a href="http://stackoverflow.com/questions/22887548/css-stretching-background-image-to-100-width-and-height-of-screen" target="_blank" rel="external">参考</a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">"bg.jpg"</span>) no-repeat</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">100%</span> <span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>size用来获取背景图片，100%是把整张图片铺满背景</p>
+<a id="more"></a>
 <hr>
 <p>2015-09-01<br>今天工作中又遇到：(<br>使用css3的方法。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">'bg.jpg'</span>) no-repeat center center fixed</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-moz-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-o-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>主要还是<code>background-size: cover</code>这个属性。</p>
