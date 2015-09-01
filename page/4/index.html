@@ -51,6 +51,36 @@
   <article class="post">
   <header>
     
+    <time datetime="2015-07-07T13:08:24.000Z">July 07 2015</time>
+    
+    
+  
+    <h2 class="title"><a href="/2015/featured-products-style-which-bother-me-several-days/">WooCommerce特色产品ShortCode页面样式问题</a></h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>最近被一个首页排版问题纠结了好久，明明标签排版都一样，css也已经加载了，但跟模板显示的效果差别很大，一直追踪shortcode与F12才发现是输出内容外面没有添加相应的div容器，问题终于得到解决。</p>
+    
+  </div>
+  
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2015/featured-products-style-which-bother-me-several-days/#more" class="more-link">阅读全文</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  
+</article>
+
+
+  <article class="post">
+  <header>
+    
     <time datetime="2015-07-06T13:18:03.000Z">July 06 2015</time>
     
     
@@ -154,6 +184,16 @@
     
       <p>想要把一张图片作为背景图，由于图片太大，总是不能完全显示，只能显示一部分，google之，原来是background-size没设置好，做个记录。具体<a href="http://stackoverflow.com/questions/22887548/css-stretching-background-image-to-100-width-and-height-of-screen" target="_blank" rel="external">参考</a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">"bg.jpg"</span>) no-repeat</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">100%</span> <span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>size用来获取背景图片，100%是把整张图片铺满背景</p>
+<hr>
+<p>2015-09-01<br>今天工作中又遇到：(<br>使用css3的方法。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">'bg.jpg'</span>) no-repeat center center fixed</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-moz-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-o-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>主要还是<code>background-size: cover</code>这个属性。</p>
+<p><strong> 定义和用法 </strong><br>语法<br><code>background-size: length|percentage|cover|contain;</code></p>
+<p>length（一般是px值）<br>设置背景图像的高度和宽度。<br>第一个值设置宽度，第二个值设置高度。<br>如果只设置一个值，则第二个值会被设置为 “auto”。</p>
+<p>percentage（百分比）<br>以父元素的百分比来设置背景图像的宽度和高度。<br>第一个值设置宽度，第二个值设置高度。<br>如果只设置一个值，则第二个值会被设置为 “auto”。</p>
+<p>cover<br>把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。<br>背景图像的某些部分也许无法显示在背景定位区域中。</p>
+<p>contain<br>把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。</p>
+<p>这是一个简单的测试页面：<a href="http://www.w3school.com.cn/tiy/c.asp?f=css_background-size" target="_blank" rel="external">测试</a></p>
+<p>参考链接<br><a href="http://huilang.me/perfect-full-page-background-image/" target="_blank" rel="external">完美的背景图全屏css代码 – background-size:cover?</a><br><a href="http://www.w3school.com.cn/cssref/pr_background-size.asp" target="_blank" rel="external">CSS3 background-size 属性</a></p>
 
     
   </div>
@@ -306,36 +346,6 @@
     <footer>
       <div class="alignleft">
         <a href="/2015/wordpress-note-1/#more" class="more-link">阅读全文</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    
-  
-</article>
-
-
-  <article class="post">
-  <header>
-    
-    <time datetime="2015-06-19T19:28:58.000Z">June 20 2015</time>
-    
-    
-  
-    <h2 class="title"><a href="/2015/wordpress-get-post-image-url/">WordPress获取文章中的图片</a></h2>
-  
-
-
-  </header>
-  <div class="entry">
-    
-      <h3 id="获取post中的特色图片">获取post中的特色图片</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$thumbnail</span>_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(<span class="variable">$post-</span>&gt;ID), <span class="string">'thumbnail'</span>);</span><br><span class="line">echo <span class="variable">$thumbnail</span>_image_url[<span class="number">0</span>];</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-    
-  </div>
-  
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2015/wordpress-get-post-image-url/#more" class="more-link">阅读全文</a>
       </div>
       <div class="clearfix"></div>
     </footer>

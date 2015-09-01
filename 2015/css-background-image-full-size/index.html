@@ -65,6 +65,16 @@
     
       <p>想要把一张图片作为背景图，由于图片太大，总是不能完全显示，只能显示一部分，google之，原来是background-size没设置好，做个记录。具体<a href="http://stackoverflow.com/questions/22887548/css-stretching-background-image-to-100-width-and-height-of-screen" target="_blank" rel="external">参考</a><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">"bg.jpg"</span>) no-repeat</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">100%</span> <span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>size用来获取背景图片，100%是把整张图片铺满背景</p>
+<hr>
+<p>2015-09-01<br>今天工作中又遇到：(<br>使用css3的方法。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(<span class="string">'bg.jpg'</span>) no-repeat center center fixed</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-moz-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">-o-background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> cover</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>主要还是<code>background-size: cover</code>这个属性。</p>
+<p><strong> 定义和用法 </strong><br>语法<br><code>background-size: length|percentage|cover|contain;</code></p>
+<p>length（一般是px值）<br>设置背景图像的高度和宽度。<br>第一个值设置宽度，第二个值设置高度。<br>如果只设置一个值，则第二个值会被设置为 “auto”。</p>
+<p>percentage（百分比）<br>以父元素的百分比来设置背景图像的宽度和高度。<br>第一个值设置宽度，第二个值设置高度。<br>如果只设置一个值，则第二个值会被设置为 “auto”。</p>
+<p>cover<br>把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。<br>背景图像的某些部分也许无法显示在背景定位区域中。</p>
+<p>contain<br>把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。</p>
+<p>这是一个简单的测试页面：<a href="http://www.w3school.com.cn/tiy/c.asp?f=css_background-size" target="_blank" rel="external">测试</a></p>
+<p>参考链接<br><a href="http://huilang.me/perfect-full-page-background-image/" target="_blank" rel="external">完美的背景图全屏css代码 – background-size:cover?</a><br><a href="http://www.w3school.com.cn/cssref/pr_background-size.asp" target="_blank" rel="external">CSS3 background-size 属性</a></p>
 
     
   </div>

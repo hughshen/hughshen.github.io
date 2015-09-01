@@ -51,6 +51,36 @@
   <article class="post">
   <header>
     
+    <time datetime="2015-06-19T19:28:58.000Z">June 20 2015</time>
+    
+    
+  
+    <h2 class="title"><a href="/2015/wordpress-get-post-image-url/">WordPress获取文章中的图片</a></h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <h3 id="获取post中的特色图片">获取post中的特色图片</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="variable">$thumbnail</span>_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(<span class="variable">$post-</span>&gt;ID), <span class="string">'thumbnail'</span>);</span><br><span class="line">echo <span class="variable">$thumbnail</span>_image_url[<span class="number">0</span>];</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2015/wordpress-get-post-image-url/#more" class="more-link">阅读全文</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  
+</article>
+
+
+  <article class="post">
+  <header>
+    
     <time datetime="2015-06-15T12:24:08.000Z">June 15 2015</time>
     
     
@@ -313,37 +343,6 @@
     <footer>
       <div class="alignleft">
         <a href="/2015/R-note/#more" class="more-link">阅读全文</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    
-  
-</article>
-
-
-  <article class="post">
-  <header>
-    
-    <time datetime="2015-03-29T08:42:24.000Z">March 29 2015</time>
-    
-    
-  
-    <h2 class="title"><a href="/2015/ubuntu-install-hadoop/">Ubuntu1404下安装Hadoop2.6.0</a></h2>
-  
-
-
-  </header>
-  <div class="entry">
-    
-      <p>安装过程参考<a href="http://www.cnblogs.com/kinglau/p/3794433.html">1</a>，<a href="http://www.cnblogs.com/kinglau/p/3796164.html">2</a>，感谢原<a href="http://home.cnblogs.com/u/kinglau/">作者</a>，本文用作记录</p>
-<h2 id="单机模式">单机模式</h2><h3 id="创建用户组和用户并添加权限">创建用户组和用户并添加权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo addgroup hadoop</span><br><span class="line">sudo adduser -ingroup hadoop hadoop</span><br></pre></td></tr></table></figure>
-    
-  </div>
-  
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2015/ubuntu-install-hadoop/#more" class="more-link">阅读全文</a>
       </div>
       <div class="clearfix"></div>
     </footer>

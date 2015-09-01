@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hugh&#39;Blog › 使用usort函数对二维数组进行排序</title>
+  <meta name="author" content="Hugh Shen">
+  
+  <meta name="description" content="php提供了很多的排序函数，具体看这里：Sorting Arrays。
+看了一下，好像没有对二维数组以上进行排序的函数，但是有一个usort()函数，可以使用用户自定义的函数进行排序，这个函数可以满足需求。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="使用usort函数对二维数组进行排序"/>
+  <meta property="og:site_name" content="Hugh&#39;Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+  <header id="header"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</header>
+  <div class="nothing-wrap"><div class="nothing">兴趣就是最大的动力。</div></div>
+  <div id="content" class="inner">
+	<!--<div id="menu"><ul>
+	
+		<li><a href="/">首页</a></li>
+	
+		<li><a href="/archives">归档</a></li>
+	
+		<li><a href="/categories">分类</a></li>
+	
+		<li><a href="/tags">标签</a></li>
+	
+</ul>
+</div>-->
+	<div id="post-content"><article class="post">
+  <header>
+    
+    <time datetime="2015-09-01T13:13:13.000Z">September 01 2015</time>
+    
+    
+  
+    <h2 class="title">使用usort函数对二维数组进行排序</h2>
+  
+
+
+  </header>
+  <div class="entry">
+    
+      <p>php提供了很多的排序函数，具体看这里：<a href="http://php.net/manual/en/array.sorting.php" target="_blank" rel="external">Sorting Arrays</a>。</p>
+<p>看了一下，好像没有对二维数组以上进行排序的函数，但是有一个<code>usort()</code>函数，可以使用用户自定义的函数进行排序，这个函数可以满足需求。</p>
+<a id="more"></a>
+<p>这是官方手册上的一个简单例子。<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"><span class="keyword">function</span> cmp(<span class="variable">$a</span>, <span class="variable">$b</span>) &#123;</span><br><span class="line">    if (<span class="variable">$a</span> == <span class="variable">$b</span>) return <span class="number">0</span>;</span><br><span class="line">    return (<span class="variable">$a</span> &lt; <span class="variable">$b</span>) ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">array</span>(<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>);</span><br><span class="line">usort(<span class="variable">$a</span>, <span class="string">"cmp"</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>对二维数组以上，只需要做一点点修改，手册也给出了例子。<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// 对fruits数组按color进行排序</span><br><span class="line"><span class="keyword">function</span> cmp(<span class="variable">$a</span>, <span class="variable">$b</span>) &#123;</span><br><span class="line">    if (<span class="variable">$a</span>[<span class="string">"color"</span>] == <span class="variable">$b</span>[<span class="string">"color"</span>]) return <span class="number">0</span>;</span><br><span class="line">    return (<span class="variable">$a</span>[<span class="string">"color"</span>] &gt; <span class="variable">$b</span>[<span class="string">"color"</span>]) ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$fruits</span>[<span class="number">0</span>][<span class="string">"fruit"</span>] = <span class="string">"lemons"</span>;</span><br><span class="line"><span class="variable">$fruits</span>[<span class="number">0</span>][<span class="string">"color"</span>] = <span class="string">"yellow"</span>;</span><br><span class="line"><span class="variable">$fruits</span>[<span class="number">1</span>][<span class="string">"fruit"</span>] = <span class="string">"apples"</span>;</span><br><span class="line"><span class="variable">$fruits</span>[<span class="number">1</span>][<span class="string">"color"</span>] = <span class="string">"red"</span>;</span><br><span class="line"><span class="variable">$fruits</span>[<span class="number">2</span>][<span class="string">"fruit"</span>] = <span class="string">"grapes"</span>;</span><br><span class="line"><span class="variable">$fruits</span>[<span class="number">2</span>][<span class="string">"color"</span>] = <span class="string">"purple"</span>;</span><br><span class="line"></span><br><span class="line">usort(<span class="variable">$fruits</span>, <span class="string">"cmp"</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>usort函数还可以做更多复杂的排序，具体去看官方手册。</p>
+<p>参考链接<br><a href="http://php.net/manual/zh/function.usort.php" target="_blank" rel="external">usort</a></p>
+
+    
+  </div>
+  
+  <footer>
+    <div class="alignleft">
+	
+  
+  <div class="categories">
+    <a href="/categories/PHP/">PHP</a>
+  </div>
+
+	
+  
+  <div class="tags">
+    <a href="/tags/sort/">sort</a>
+  </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  
+</article>
+</div>
+  </div>
+  <footer id="footer"><div> 
+	<p>
+	
+		&copy; 2015 Hugh Shen
+	
+		<a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+	</p>
+</div>
+<!--<div class="alignleft">
+  <p>
+  
+    &copy; 2015 Hugh Shen
+  
+  </p>
+  <p>
+    <a href="http://github.com/willerce/hexo-theme-noderce">Noderce</a> Theme By <a href="http://willerce.com" >willerce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div>-->
+</footer>
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62100459-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
