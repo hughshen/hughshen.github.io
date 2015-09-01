@@ -5,7 +5,7 @@ tags:
 - css
 ---
 
-###css3知识匮乏，做个记录，感谢原作者：[http://www.jq-school.com/Show.aspx?id=281](http://www.jq-school.com/Show.aspx?id=281)
+### css3知识匮乏，做个记录，感谢原作者：[http://www.jq-school.com/Show.aspx?id=281](http://www.jq-school.com/Show.aspx?id=281)
 效果一：360度旋转，修改rotate（旋转度数）
 
 <!--more-->
