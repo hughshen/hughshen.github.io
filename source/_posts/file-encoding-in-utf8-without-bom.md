@@ -21,7 +21,7 @@ tags:
 :setlocal nobomb 
 " 查看当前文件是否有bom
 :setlocal bomb?
-" 下面两个也可以，一个是设置当前没有bom，另一个没有
+" 下面两个也可以，一个是设置当前没有bom，另一个有bom
 :set nobomb
 :set bomb
 ```

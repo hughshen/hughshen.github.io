@@ -45,5 +45,16 @@ usort($fruits, "cmp");
 ```
 usort函数还可以做更多复杂的排序，具体去看官方手册。
 
+---
+
+2015-09-07
+今天在使用usort时，新建一个自定义函数，然后报错，说是什么函数declare的问题，即使是换一个自定义函数还是一样报错，最后还是使用了匿名函数来解决。
+```
+usort($fruits, function ($a, $b) {
+    if ($a["color"] == $b["color"]) return 0;
+    return ($a["color"] > $b["color"]) ? 1 : -1;
+});
+```
+
 参考链接
 [usort](http://php.net/manual/zh/function.usort.php)
