@@ -1,0 +1,9 @@
+<!-- Articles List -->
+<div class="list-wrap">
+	<ul class="list">
+		<li class="item" ng-repeat="item in list | orderBy:name:true" >
+			<a class="title" href="#/detail/{{item.fullTitle}}">{{item.title}}</a>
+			<span class="time">{{item.created | date:'yyyy-MM-dd'}}</span>
+		</li>
+	</ul>
+</div>
