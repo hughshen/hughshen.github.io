@@ -1,5 +1,5 @@
 <!-- Articles List -->
-<div class="list-wrap">
+<div class="content-wrap" ng-show="wrapShow">
 	<ul class="list">
 		<li class="item" ng-repeat="item in list | orderBy:name:true" >
 			<a class="title" href="#/detail/{{item.fullTitle}}">{{item.title}}</a>

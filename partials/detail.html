@@ -1,7 +1,9 @@
 <!-- Article Content -->
-<div class="single-issue">
-	<div class="head">
-		<h1>{{currentItem.title}} <a class="back" href="#/">Back</a></h1>
+<div class="content-wrap" ng-show="wrapShow">
+	<div class="single-issue">
+		<div class="head">
+			<h1>{{currentItem.title}}</h1>
+		</div>
+		<div class="content" ng-bind-html="currentItem.html"></div>
 	</div>
-	<div class="content" ng-bind-html="currentItem.html"></div>
 </div>

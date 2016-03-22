@@ -28,6 +28,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', function($scope, GitConfig, ListResource) {
 
+	$scope.wrapShow = false;
 	$scope.list = [];
 
 	ListResource.query(GitConfig, function(data) {
@@ -39,11 +40,13 @@ app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', funct
 			tmp.title = val.name.slice(0, -3).replace(/[\d]{13}-/i, '');
 			$scope.list.push(tmp);
 		});
+		$scope.wrapShow = true;
 	});
 }]);
 
 app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfig', function($scope, $http, $routeParams, GitConfig) {
 
+	$scope.wrapShow = false;
 	$scope.currentItem = {};
 	$scope.currentItem.title = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
 
@@ -55,5 +58,6 @@ app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfi
 		}
 	}).then(function(res) {
 		$scope.currentItem.html = res.data;
+		$scope.wrapShow = true;
 	});
 }]);
