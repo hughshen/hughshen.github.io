@@ -16,6 +16,14 @@ app.factory('ListResource', function ($resource) {
 	});
 });
 
+app.service('AnalyticsService', function($location, $window) {
+	this.recordPageview = function() {
+		$window.ga('create', 'UA-62100459-1', 'auto');
+		$window.ga('set', 'page', $location.path());
+		$window.ga('send', 'pageview');
+	};
+});
+
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: './partials/list.html',
@@ -26,7 +34,7 @@ app.config(['$routeProvider', function($routeProvider) {
 	}).otherwise('/');
 }]);
 
-app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', function($scope, GitConfig, ListResource) {
+app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', 'AnalyticsService', function($scope, GitConfig, ListResource, AnalyticsService) {
 
 	$scope.wrapShow = false;
 	$scope.list = [];
@@ -42,9 +50,11 @@ app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', funct
 		});
 		$scope.wrapShow = true;
 	});
+
+	AnalyticsService.recordPageview();
 }]);
 
-app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfig', function($scope, $http, $routeParams, GitConfig) {
+app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfig', 'AnalyticsService', function($scope, $http, $routeParams, GitConfig, AnalyticsService) {
 
 	$scope.wrapShow = false;
 	$scope.currentItem = {};
@@ -60,4 +70,6 @@ app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfi
 		$scope.currentItem.html = res.data;
 		$scope.wrapShow = true;
 	});
+
+	AnalyticsService.recordPageview();
 }]);
