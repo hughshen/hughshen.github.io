@@ -1,5 +1,5 @@
 
-var app = angular.module('mainApp', ['ngResource', 'ngRoute', 'ngSanitize']);
+var app = angular.module('mainApp', ['ngResource', 'ngRoute', 'ngSanitize', 'angulartics', 'angulartics.google.analytics']);
 
 app.constant('GitConfig', {
 	owner: 'hughshen',
@@ -16,14 +16,6 @@ app.factory('ListResource', function ($resource) {
 	});
 });
 
-app.service('AnalyticsService', function($location, $window) {
-	this.recordPageview = function() {
-		$window.ga('create', 'UA-62100459-1', 'auto');
-		$window.ga('set', 'page', $location.path());
-		$window.ga('send', 'pageview');
-	};
-});
-
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: './partials/list.html',
@@ -34,7 +26,7 @@ app.config(['$routeProvider', function($routeProvider) {
 	}).otherwise('/');
 }]);
 
-app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', 'AnalyticsService', function($scope, GitConfig, ListResource, AnalyticsService) {
+app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', function($scope, GitConfig, ListResource) {
 
 	$scope.wrapShow = false;
 	$scope.list = [];
@@ -50,11 +42,9 @@ app.controller('commonController', ['$scope', 'GitConfig', 'ListResource', 'Anal
 		});
 		$scope.wrapShow = true;
 	});
-
-	AnalyticsService.recordPageview();
 }]);
 
-app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfig', 'AnalyticsService', function($scope, $http, $routeParams, GitConfig, AnalyticsService) {
+app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfig', function($scope, $http, $routeParams, GitConfig) {
 
 	$scope.wrapShow = false;
 	$scope.currentItem = {};
@@ -70,6 +60,4 @@ app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfi
 		$scope.currentItem.html = res.data;
 		$scope.wrapShow = true;
 	});
-
-	AnalyticsService.recordPageview();
 }]);
