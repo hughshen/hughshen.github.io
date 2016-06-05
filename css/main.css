@@ -9,6 +9,10 @@ body {
 	padding: 20px;
 }
 
+code, .highlight pre {
+	font-family: inherit;
+}
+
 /*Articles list*/
 .list {
 	list-style: none;
