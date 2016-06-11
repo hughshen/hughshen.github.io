@@ -62,7 +62,7 @@ app.controller('detailController', ['$scope', '$http', '$routeParams', 'GitConfi
 
 	$http({
 		method: 'GET',
-		url: 'http://api.github.com/repos/' + GitConfig.owner + '/' + GitConfig.repo + '/contents/' + GitConfig.path + '/' + $routeParams.title + '?ref=' + GitConfig.ref,
+		url: 'https://api.github.com/repos/' + GitConfig.owner + '/' + GitConfig.repo + '/contents/' + GitConfig.path + '/' + $routeParams.title + '?ref=' + GitConfig.ref,
 		headers: {
 			'Accept': 'application/vnd.github.v3.html'
 		}
