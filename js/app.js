@@ -1,5 +1,10 @@
 
-var app = angular.module('mainApp', ['ngResource', 'ngRoute', 'ngSanitize']);
+var app = angular.module('mainApp', [
+	'ngResource',
+	'ngRoute',
+	'ngSanitize',
+	'ngAnimate',
+]);
 
 app.constant('GitConfig', {
 	owner: 'hughshen',

@@ -13,10 +13,12 @@
 }
 
 .row {
+	.flex;
 	flex-direction: row;
 }
 
 .column {
+	.flex;
 	flex-direction: column;
 }
 
@@ -26,13 +28,11 @@
 }
 
 .row-center {
-	.flex;
 	.row;
 	.flex-center;
 }
 
 .column-center {
-	.flex;
 	.column;
 	.flex-center;
 }
@@ -52,12 +52,12 @@
 	justify-content: space-around;
 }
 
-.flex-v(@value: 0) {
-	-webkit-box-flex: @value;
-	-moz-box-flex: @value;
-	-webkit-flex: @value;
-	-ms-flex: @value;
-	flex: @value;
+.item-flex(@grow: 0, @shrink: 1, @basis: auto) {
+	-webkit-box-flex: @grow @shrink @basis;
+	-moz-box-flex: @grow @shrink @basis;
+	-webkit-flex: @grow @shrink @basis;
+	-ms-flex: @grow @shrink @basis;
+	flex: @grow @shrink @basis;
 }
 
 .border(@pix: 1px, @color: @gray, @type: solid) {
@@ -112,16 +112,23 @@ body {
 		width: 850px;
 		max-width: 100%;
 	}
+	.ng-enter {
+		.transition(all, .5s, linear);
+	}
+	.ng-enter {
+		opacity: 0;
+	}
+	.ng-enter-active {
+		opacity: 1;
+	}
 }
 
 .content-wrap {
 	padding: 1.5rem;
 	background: #fff;
 	.list {
-		.flex;
 		.column;
 		.item {
-			.flex;
 			.row;
 			.flex-between;
 			margin-bottom: 1rem;
