@@ -1,8 +1,8 @@
 <!-- Article Content -->
-<div class="content-wrap" ng-show="wrapShow">
+<div class="content-wrap ng-cloak" ng-show="wrapShow"  ng-cloak>
 	<div class="detail">
 		<div class="head">
-			<h1>{{currentItem.title}}</h1>
+			<h1 ng-bind="currentItem.title"></h1>
 		</div>
 		<div class="content" ng-bind-html="currentItem.html"></div>
 	</div>
