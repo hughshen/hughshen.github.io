@@ -111,6 +111,9 @@ body {
 		margin-bottom: 3rem;
 		width: 850px;
 		max-width: 100%;
+		@media (max-width: @mobile-width) {
+			margin: 0;
+		}
 	}
 	.ng-enter {
 		.transition(all, .5s, linear);
