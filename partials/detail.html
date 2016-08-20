@@ -1,8 +1,9 @@
 <!-- Article Content -->
-<div class="content-wrap ng-cloak" ng-show="wrapShow"  ng-cloak>
+<div class="content-wrap ng-cloak" ng-show="!loading"  ng-cloak>
 	<div class="detail">
 		<div class="head">
 			<h1 ng-bind="currentItem.title"></h1>
+			<p>编辑于 {{ currentItem.created | date: 'yyyy-MM-dd H:mm:ss' }}</p>
 		</div>
 		<div class="content" ng-bind-html="currentItem.html"></div>
 	</div>

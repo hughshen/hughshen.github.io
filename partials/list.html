@@ -1,9 +1,10 @@
 <!-- Articles List -->
-<div class="content-wrap ng-cloak" ng-show="wrapShow"  ng-cloak>
+<div class="content-wrap ng-cloak" ng-show="!loading"  ng-cloak>
 	<div class="list">
-		<div class="item" ng-repeat="item in list | orderBy:name:true" >
+		<div class="item with-total">当前共 {{ list.length }} 篇</div>
+		<div class="item" ng-repeat="item in list | orderBy:created:true" >
 			<a class="title" href="#/detail/{{ item.fullTitle }}">{{ item.title }}</a>
-			<span class="time">{{ item.created | date:'yyyy-MM-dd' }}</span>
+			<span class="time">{{ item.created | date: 'yyyy-MM-dd' }}</span>
 		</div>
 	</div>
 </div>

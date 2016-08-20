@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hugh Blog</title>
+<title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel='stylesheet' href='css/site.min.css' type='text/css'/>
 <script src="https://cdn.bootcss.com/angular.js/1.5.7/angular.min.js"></script>
@@ -10,9 +10,16 @@
 <script src="https://cdn.bootcss.com/angular.js/1.5.7/angular-sanitize.min.js"></script>
 <script src="https://cdn.bootcss.com/angular.js/1.5.7/angular-animate.min.js"></script>
 </head>
-<body ng-app="mainApp" ng-controller="commonController">
+<body ng-app="mainApp" ng-controller="mainController" ng-cloak>
 
-<div class="container" ng-view></div>
+<div class="container {{ pageClass }}" ng-class="{ 'with-bar': !loading }" ng-view autoscroll="true"></div>
+
+<div class="pace" ng-class="{ 'pace-active': loading, 'pace-inactive': !loading }">
+	<div class="pace-progress">
+		<div class="pace-progress-inner"></div>
+	</div>
+	<div class="pace-activity"></div>
+</div>
 
 <script src="js/ga.js"></script>
 <script src="js/app.js"></script>

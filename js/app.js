@@ -57,10 +57,10 @@ app.service('AnalyticsService', function($location, $window) {
 app.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.when('/', {
-			templateUrl: './partials/list.html',
-			controller: 'commonController'
+			templateUrl: 'partials/list.html',
+			controller: 'mainController'
 		}).when('/detail/:title', {
-			templateUrl: './partials/detail.html',
+			templateUrl: 'partials/detail.html',
 			controller: 'detailController',
 			resolve: {
 				DetailHtml: ['$route', 'DetailService',
@@ -73,22 +73,34 @@ app.config(['$routeProvider',
 	}]
 );
 
-app.controller('commonController', ['$scope', 'GitConfig', 'ListService', 'AnalyticsService',
+app.run(['$rootScope', '$routeParams', '$window',
+	function ($rootScope, $routeParams, $window) {
+		$rootScope.$on('$routeChangeSuccess', function(current, prev) {
+			var documentTitle = 'Hugh Blog';
+			if (!angular.isUndefined($routeParams.title)) {
+				documentTitle = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
+			}
+			$window.document.title = documentTitle;
+		});
+	}]
+);
+
+app.controller('mainController', ['$scope', 'GitConfig', 'ListService', 'AnalyticsService',
 	function($scope, GitConfig, ListService, AnalyticsService) {
 
-	$scope.wrapShow = false;
+	$scope.pageClass = 'page-list';
+	$scope.loading = true;
 	$scope.list = [];
 
 	ListService.query(GitConfig, function(data) {
 		angular.forEach(data, function(val, key) {
-			var tmp = {};
-			tmp.fullTitle = val.name;
-			tmp.downloadUrl = val.download_url;
-			tmp.created = val.name.match(/[\d]{13}/i)[0];
-			tmp.title = val.name.slice(0, -3).replace(/[\d]{13}-/i, '');
-			$scope.list.push(tmp);
+			$scope.list.push({
+				fullTitle: val.name,
+				created: val.name.match(/[\d]{13}/i)[0],
+				title: val.name.slice(0, -3).replace(/[\d]{13}-/i, '')
+			});
 		});
-		$scope.wrapShow = true;
+		$scope.loading = false;
 	});
 
 	AnalyticsService.recordPageview();
@@ -97,12 +109,14 @@ app.controller('commonController', ['$scope', 'GitConfig', 'ListService', 'Analy
 app.controller('detailController', ['$scope', '$routeParams', 'AnalyticsService', 'DetailHtml',
 	function($scope, $routeParams, AnalyticsService, DetailHtml) {
 
-	$scope.wrapShow = false;
+	$scope.pageClass = 'page-detail';
+	$scope.loading = true;
 	$scope.currentItem = {};
+	$scope.currentItem.created = $routeParams.title.match(/[\d]{13}/i)[0];
 	$scope.currentItem.title = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
 
 	$scope.currentItem.html = DetailHtml;
-	$scope.wrapShow = true;
+	$scope.loading = false;
 
 	AnalyticsService.recordPageview();
 }]);
