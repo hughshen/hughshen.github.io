@@ -49,7 +49,7 @@ app.factory('DetailService', ['$q', '$http', 'GitConfig',
 app.service('AnalyticsService', function($location, $window) {
 	this.recordPageview = function() {
 		$window.ga('create', 'UA-62100459-1', 'auto');
-		$window.ga('set', 'page', $location.path());
+		$window.ga('set', 'page', $location.path().replace(/[\d]{13}-/i, ''));
 		$window.ga('send', 'pageview');
 	};
 });
