@@ -19,11 +19,13 @@ export class List implements OnInit {
 	ngOnInit(): void {
 		this.listService.getList().subscribe((data: any) => {
 			for (let val of data) {
-				this.data.push({
-					fullTitle: val.name,
-					created: val.name.match(/[\d]{13}/i)[0],
-					title: val.name.slice(0, -3).replace(/[\d]{13}-/i, '')
-				});
+				if (/\.md$/.test(val.name)) {
+					this.data.push({
+						fullTitle: val.name,
+						created: val.name.match(/[\d]{13}/i)[0],
+						title: val.name.slice(0, -3).replace(/[\d]{13}-/i, '')
+					});
+				}
 			}
 		});
 	}
