@@ -1,0 +1,5 @@
+<ul>
+	<li *ngFor="let item of data;">
+		<a [routerLink]="['/detail/' + item.fullTitle]">{{ item.title }}</a>
+	</li>
+</ul>
