@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-// import './app.component.less';
+import './app.component.less';
 
 @Component({
 	selector: 'app',

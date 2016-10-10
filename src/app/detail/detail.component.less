@@ -1,0 +1,165 @@
+@gray: #ddd;
+@white: #fff;
+@mobile-width: 768px;
+
+.detail-wrap {
+	background: @white;
+	display: block;
+	padding: 2rem;
+	box-shadow: 1px 1px 3px darken(@gray, 20%);
+	.head {
+		text-align: center;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid @gray;
+		h1 {
+			margin: 0;
+			@media (max-width: @mobile-width) {
+				font-size: 1.5rem;
+			}
+		}
+		.ps {
+			display: block;
+			font-size: .8rem;
+			color: darken(@gray, 20%);
+			padding-top: .5rem;
+		}
+	}
+	.body {
+		margin-top: 2rem;
+		article {
+			h2 {
+				padding-bottom: 1rem;
+				margin-top: 2.5rem;
+				border-bottom: 1px solid @gray;
+			}
+		}
+	}
+}
+
+// else
+p, blockquote, ul, ol, dl, li, table, pre {
+	margin: .7rem 0;
+}
+p {
+	line-height: 1.5rem;
+}
+strong {
+	font-weight: normal;
+}
+hr {
+	height: 0;
+	padding: 0;
+	margin-top: 3rem;
+	border-bottom: 2px dashed @gray;
+	border-top: 2px dashed @gray;
+	@media (max-width: @mobile-width) {
+		margin-top: 3rem;
+	}
+}
+blockquote {
+	border-left: 4px solid @gray;
+	padding: 0 1rem;
+	color: #777777;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+code {
+	border: 1px solid #eaeaea;
+	border-radius: 0;
+	margin: 0 2px;
+	padding: 0 5px;
+	white-space: inherit;
+	background-color: @gray;
+	word-break: break-word;
+}
+pre, .highlight pre {
+	border: 1px solid @gray;
+	border-radius: 0;
+	background-color: @gray;
+	line-height: 1.2rem;
+	overflow: auto;
+	padding: .5rem;
+	code {
+		margin: 0;
+		padding: 0;
+		white-space: pre;
+		border: none;
+		background: transparent;
+	}
+}
+sup {
+	font-size: 0.83em;
+	vertical-align: super;
+	line-height: 0;
+}
+
+/* Highlight style from GitHub */
+.pl-c {
+	color: #969896;
+	font-style: italic;
+}
+.pl-c1, .pl-s .pl-v {
+	color: #0086b3;
+}
+.pl-e, .pl-en {
+	color: #795da3;
+}
+.pl-s .pl-s1, .pl-smi {
+	color: #333;
+}
+.pl-ent {
+	color: #63a35c;
+}
+.pl-k {
+	color: #a71d5d;
+}
+.pl-pds, .pl-s, .pl-s .pl-pse .pl-s1, .pl-sr, .pl-sr .pl-cce, .pl-sr .pl-sra, .pl-sr .pl-sre {
+	color: #183691;
+}
+.pl-v {
+	color: #ed6a43;
+}
+.pl-id {
+	color: #b52a1d;
+}
+.pl-ii {
+	background-color: #b52a1d;
+	color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+	color: #63a35c;
+	font-weight: bold;
+}
+.pl-ml {
+	color: #693a17
+}
+.pl-mh, .pl-mh .pl-en, .pl-ms {
+	color: #1d3e81;
+	font-weight: bold;
+}
+.pl-mq {
+	color: #008080;
+}
+.pl-mi {
+	color: #333;
+	font-style: italic;
+}
+.pl-mb {
+	color: #333;
+	font-weight: bold;
+}
+.pl-md {
+	background-color: #ffecec;
+	color: #bd2c00;
+}
+.pl-mi1 {
+	background-color: #eaffea;
+	color: #55a532;
+}
+.pl-mdr {
+	color: #795da3;
+	font-weight: bold;
+}
+.pl-mo {
+	color: #1d3e81;
+}

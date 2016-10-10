@@ -1,5 +1,10 @@
-<ul>
-	<li *ngFor="let item of data;">
-		<a [routerLink]="['/detail/' + item.fullTitle]">{{ item.title }}</a>
-	</li>
-</ul>
+<div class="list-count" *ngIf="data.length">当前共 {{ data.length }} 篇</div>
+<div class="list-wrap">
+	<div class="list-item" *ngFor="let item of data;">
+		<div class="dot"></div>
+		<div class="block">
+			<a [routerLink]="['/detail/' + item.fullTitle]">{{ item.title }}</a>
+			<span class="time">{{ item.created | date:"yyyy-MM-dd" }}</span>
+		</div>
+	</div>
+</div>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
+import { BrowserModule, Title }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -18,6 +18,9 @@ import { Detail } from './detail';
 		AppComponent,
 		List,
 		Detail
+	],
+	providers: [
+		Title
 	],
 	bootstrap: [ AppComponent ]
 })
