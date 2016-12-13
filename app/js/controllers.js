@@ -1,36 +1,29 @@
 var Controllers = angular.module('Controllers', []);
 
-Controllers.controller('mainController', ['$scope', 'GitConfig', 'ListService', 'AnalyticsService',
-	function($scope, GitConfig, ListService, AnalyticsService) {
-		$scope.pageClass = 'page-list';
-		$scope.loading = true;
+Controllers.controller('mainController', ['$scope', '$http', 'AnalyticsService',
+	function($scope, $http, AnalyticsService) {
 		$scope.list = [];
 
-		ListService.query(GitConfig, function(data) {
-			angular.forEach(data, function(val, key) {
+		$http.get('https://hughshen.github.io/blog/data.json').then(function(res) {
+			angular.forEach(res.data, function(title, key) {
 				$scope.list.push({
-					fullTitle: val.name,
-					created: val.name.match(/[\d]{13}/i)[0],
-					title: val.name.slice(0, -3).replace(/[\d]{13}-/i, '')
+					full: title,
+					title: title.slice(0, -3).replace(/[\d]{13}-/i, ''),
+					created: title.match(/[\d]{13}/i)[0]
 				});
 			});
-			$scope.loading = false;
 		});
 
 		AnalyticsService.recordPageview();
 	}
 ]);
 
-Controllers.controller('detailController', ['$scope', '$routeParams', 'AnalyticsService', 'DetailHtml',
-	function($scope, $routeParams, AnalyticsService, DetailHtml) {
-		$scope.pageClass = 'page-detail';
-		$scope.loading = true;
-		$scope.currentItem = {};
-		$scope.currentItem.created = $routeParams.title.match(/[\d]{13}/i)[0];
-		$scope.currentItem.title = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
-
-		$scope.currentItem.html = DetailHtml;
-		$scope.loading = false;
+Controllers.controller('postController', ['$scope', '$routeParams', 'AnalyticsService', 'PostHtml',
+	function($scope, $routeParams, AnalyticsService, PostHtml) {
+		$scope.post = {};
+		$scope.post.created = $routeParams.title.match(/[\d]{13}/i)[0];
+		$scope.post.title = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
+		$scope.post.html = PostHtml;
 
 		AnalyticsService.recordPageview();
 	}

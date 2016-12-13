@@ -1,25 +1,20 @@
 require('../css/site.less');
-require('./ga.js');
+require('../css/list.less');
+require('../css/post.less');
+require('./ga');
 
-var Routes = require('./routes.js');
-var Services = require('./services.js');
-var Controllers = require('./controllers.js');
+const angular = require('angular');
 
-'use strict';
+var Routes = require('./routes');
+var Services = require('./services');
+var Controllers = require('./controllers');
 
-var app = angular.module('mainApp', [
-	'ngResource',
-	'ngRoute',
-	'ngSanitize',
-	'ngAnimate',
+var app = angular.module('Blog', [
+	require('angular-resource'),
+	require('angular-route'),
+	require('angular-sanitize'),
+	require('angular-animate'),
 	'Routes',
 	'Services',
 	'Controllers',
 ]);
-
-app.constant('GitConfig', {
-	owner: 'hughshen',
-	repo: 'hughshen.github.io',
-	path: '',
-	ref: 'markdown'
-});

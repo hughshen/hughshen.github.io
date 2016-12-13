@@ -12,24 +12,14 @@ Services.service('AnalyticsService', ['$location', '$window',
 	}
 ]);
 
-Services.service('ListService', ['$resource',
-	function($resource) {
-		return $resource('https://api.github.com/repos/:owner/:repo/contents/:path', {
-			owner: '@owner',
-			repo: '@repo',
-			path: '@path'
-		});
-	}
-]);
-
-Services.service('DetailService', ['$q', '$http', 'GitConfig',
-	function($q, $http, GitConfig) {
+Services.service('PostService', ['$q', '$http',
+	function($q, $http) {
 		return {
 			getHtml: function(title) {
 				var d = $q.defer();
 				$http({
 					method: 'GET',
-					url: 'https://api.github.com/repos/' + GitConfig.owner + '/' + GitConfig.repo + '/contents/' + GitConfig.path + '/' + title + '?ref=' + GitConfig.ref,
+					url: 'https://api.github.com/repos/hughshen/blog/contents/posts/' + title,
 					headers: {
 						'Accept': 'application/vnd.github.v3.html'
 					}

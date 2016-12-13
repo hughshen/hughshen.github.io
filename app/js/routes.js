@@ -3,16 +3,16 @@ var Routes = angular.module('Routes', []);
 Routes.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.when('/', {
-			template: require('../partials/list.html'),
-			controller: 'mainController'
-		}).when('/detail/:title', {
-			template: require('../partials/detail.html'),
-			controller: 'detailController',
+			controller: 'mainController',
+			templateUrl: 'app/pages/list.html',
+		}).when('/post/:title', {
+			controller: 'postController',
+			templateUrl: 'app/pages/post.html',
 			resolve: {
-				DetailHtml: ['$route', 'DetailService',
-					function($route, DetailService) {
+				PostHtml: ['$route', 'PostService',
+					function($route, PostService) {
 						var title = $route.current.params['title'];
-						return DetailService.getHtml(title);
+						return PostService.getHtml(title);
 					}
 				]
 			}

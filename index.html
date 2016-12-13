@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Hugh Blog</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://cdn.bootcss.com/angular.js/1.5.7/angular.min.js"></script>
-	<script src="https://cdn.bootcss.com/angular.js/1.5.7/angular-resource.min.js"></script>
-	<script src="https://cdn.bootcss.com/angular.js/1.5.7/angular-route.min.js"></script>
-	<script src="https://cdn.bootcss.com/angular.js/1.5.7/angular-sanitize.min.js"></script>
-	<script src="https://cdn.bootcss.com/angular.js/1.5.7/angular-animate.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body ng-app="mainApp">
-
-	<div class="container {{ pageClass }}" ng-class="{ 'with-bar': !loading }" ng-view autoscroll="true"></div>
-
-	<script src="bundle.js"></script>
-
+<body ng-app="Blog">
+	<app ng-view autoscroll="true">Loading...</app>
+	<script src="./bundle.js"></script>
 </body>
 </html>
