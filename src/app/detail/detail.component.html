@@ -1,7 +1,0 @@
-<div class="detail-wrap" *ngIf="data.html">
-	<div class="head">
-		<h1>{{ data.title }}</h1>
-		<span class="ps">编辑于 {{ data.created | date: 'yyyy-MM-dd H:mm:ss' }}</span>
-	</div>
-	<div class="body" [innerHtml]="data.html"></div>
-</div>
