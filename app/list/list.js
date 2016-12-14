@@ -2,7 +2,7 @@
 
 require('./list.less');
 
-module.exports =  angular.module('List', [
+angular.module('List', [
 	require('angular-route')
 ])
 
@@ -32,3 +32,5 @@ module.exports =  angular.module('List', [
 		AnalyticsService.recordPageview();
 	}
 ]);
+
+module.exports =  'List';

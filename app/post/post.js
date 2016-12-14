@@ -2,7 +2,7 @@
 
 require('./post.less');
 
-module.exports =  angular.module('Post', [
+angular.module('Post', [
 	require('angular-route'),
 	require('angular-sanitize')
 ])
@@ -56,3 +56,5 @@ module.exports =  angular.module('Post', [
 		AnalyticsService.recordPageview();
 	}
 ]);
+
+module.exports =  'Post';

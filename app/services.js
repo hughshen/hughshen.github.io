@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = angular.module('Services', [])
+angular.module('Services', [])
 
 .service('AnalyticsService', ['$location', '$window',
 	function($location, $window) {
@@ -16,3 +16,5 @@ module.exports = angular.module('Services', [])
 		};
 	}
 ]);
+
+module.exports = 'Services';
