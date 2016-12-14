@@ -3,11 +3,33 @@
 @primary-color: #3f51b5;
 @mobile-width: 768px;
 
+*, &:after, &:before {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+	background: #eee;
+}
+
 a {
 	font-size: 1.1rem;
 	text-decoration: none;
 	&:visited, &:link, &:active {
 		color: @primary-color;
+	}
+}
+
+app {
+	padding: 3rem 0;
+	display: block;
+	max-width: 800px;
+	margin: 0 auto;
+	@media (max-width: 768px) {
+		padding: 0;
 	}
 }
 
