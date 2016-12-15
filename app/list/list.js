@@ -10,25 +10,25 @@ angular.module('List', [
 	function($routeProvider) {
 		$routeProvider.when('/', {
 			templateUrl: 'app/list/list.html',
-			controller: 'ListController'
+			controller: 'ListController',
+			controllerAs: 'list'
 		});
 	}
 ])
 
-.controller('ListController', ['$scope', '$http', 'AnalyticsService',
-	function($scope, $http, AnalyticsService) {
-		$scope.list = [];
-
+.controller('ListController', ['$http', 'AnalyticsService',
+	function($http, AnalyticsService) {
+		var list = this;
+		list.posts = [];
 		$http.get('https://hughshen.github.io/blog/data.json').then(function(res) {
 			angular.forEach(res.data, function(title, key) {
-				$scope.list.push({
+				list.posts.push({
 					full: title,
 					title: title.slice(0, -3).replace(/[\d]{13}-/i, ''),
 					created: title.match(/[\d]{13}/i)[0]
 				});
 			});
 		});
-
 		AnalyticsService.recordPageview();
 	}
 ]);

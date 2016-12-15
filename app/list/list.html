@@ -1,7 +1,7 @@
-<div class="list-wrap" ng-show="list.length">
-	<div class="list-count">当前共 {{ list.length }} 篇</div>
+<div class="list-wrap" ng-show="list.posts.length">
+	<div class="list-count">当前共 {{ list.posts.length }} 篇</div>
 	<div class="list-items">
-		<div class="list-item" ng-repeat="post in list">
+		<div class="list-item" ng-repeat="post in list.posts">
 			<div class="dot"></div>
 			<div class="block" ng-class-odd="'left'" ng-class-even="'right'">
 				<a href="/#!/post/{{ post.full }}">{{ post.title }}</a>

@@ -10,8 +10,9 @@ angular.module('Post', [
 .config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.when('/post/:title', {
-			controller: 'PostController',
 			templateUrl: 'app/post/post.html',
+			controller: 'PostController',
+			controllerAs: 'post',
 			resolve: {
 				PostHtml: ['$route', 'PostService',
 					function($route, PostService) {
@@ -46,13 +47,12 @@ angular.module('Post', [
 	}
 ])
 
-.controller('PostController', ['$scope', '$routeParams', 'AnalyticsService', 'PostHtml',
-	function($scope, $routeParams, AnalyticsService, PostHtml) {
-		$scope.post = {};
-		$scope.post.created = $routeParams.title.match(/[\d]{13}/i)[0];
-		$scope.post.title = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
-		$scope.post.html = PostHtml;
-
+.controller('PostController', ['$routeParams', 'AnalyticsService', 'PostHtml',
+	function($routeParams, AnalyticsService, PostHtml) {
+		var post = this;
+		post.created = $routeParams.title.match(/[\d]{13}/i)[0];
+		post.title = $routeParams.title.slice(0, -3).replace(/[\d]{13}-/i, '');
+		post.html = PostHtml;
 		AnalyticsService.recordPageview();
 	}
 ]);
