@@ -16,27 +16,19 @@ class Blog extends React.Component {
         var docTitle = 'Hugh\'s Blog';
         document.title = docTitle;
         Helper.recordPageview('/', docTitle);
-        if (Helper.getPosts()) {
-            this.initPosts(Helper.getPosts());
-        } else {
-            Helper.listFetch().then(res => {
-                return res.json();
-            }).then(data => {
-                this.initPosts(Helper.postsParse(data));
-            }).catch(error => {
-                this.setState({
-                    error: error.message,
-                    loading: false,
-                })
+        Helper.listFetch().then(res => {
+            return res.json();
+        }).then(data => {
+            this.setState({
+                posts: Helper.postsParse(data),
+                loading: false
             });
-        }
-    }
-
-    initPosts(data) {
-        this.setState({
-            posts: data,
-            loading: false,
-        })
+        }).catch(error => {
+            this.setState({
+                error: error.message,
+                loading: false
+            })
+        });
     }
 
     render() {

@@ -5,29 +5,6 @@ if (!window.Promise) window.Promise = Promise;
 
 const LIST_API = 'https://api.github.com/repos/hughshen/blog/contents/data.json';
 const POST_API = 'https://api.github.com/repos/hughshen/blog/contents/posts/:title';
-const STORE_POSTS_NAME = 'blog_posts';
-const STORE_HTML_NAME = 'blog_html_map';
-const STORE_EXPIRATION_NAME = 'blog_expiration';
-const STORE_EXPIRATION = 1800 * 1000;
-const STORE = require('store');
-
-var getWithExpiration = (name, key) => {
-    if (STORE.enabled) {
-        var exp = STORE.get(STORE_EXPIRATION_NAME);
-        if (exp === undefined || (new Date().getTime() - exp > STORE_EXPIRATION)) return null;
-        if (name !== undefined) {
-            var res = STORE.get(name);
-            if (res !== undefined) {
-                if (key !== undefined) {
-                    if (res[key] !== undefined) return res[key];
-                    return null;
-                }
-                return res;
-            }
-        }
-    }
-    return null;
-}
 
 var Helper = {
     listFetch: () => {
@@ -45,15 +22,6 @@ var Helper = {
             }
         });
     },
-    getPosts: () => {
-        return getWithExpiration(STORE_POSTS_NAME);
-    },
-    getPost: id => {
-        return getWithExpiration(STORE_POSTS_NAME, id);
-    },
-    getPostHtml: id => {
-        return getWithExpiration(STORE_HTML_NAME, id);
-    },
     postsParse: data => {
         var posts = {};
         data.map((title, key) => {
@@ -67,16 +35,7 @@ var Helper = {
                 longDate: date.toISOString().slice(0, 10) + ' ' + date.toTimeString().slice(0, 8),
             };
         });
-        STORE.set(STORE_EXPIRATION_NAME, new Date().getTime());
-        STORE.set(STORE_POSTS_NAME, posts);
         return posts;
-    },
-    storePostHtml: (id, html) => {
-        if (STORE.enabled) {
-            STORE.transact(STORE_HTML_NAME, v => {
-                v[id] = html;
-            });
-        }
     },
     recordPageview: (pagePath, pageTitle) => {
         if (window.ga !== undefined) {
