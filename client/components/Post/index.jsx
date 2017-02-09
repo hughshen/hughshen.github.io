@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Helper from '../helper';
+import Helper from 'third-party/helper';
 
 class Post extends React.Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class Post extends React.Component {
             post: null,
             html: null,
             loading: true,
-            error: null,
+            error: null
         }
     }
 
@@ -23,13 +23,13 @@ class Post extends React.Component {
             } else {
                 this.setState({
                     error: 'The post do not exist.',
-                    loading: false,
+                    loading: false
                 })
             }
         }).catch(error => {
             this.setState({
                 error: error.message,
-                loading: false,
+                loading: false
             })
         });
     }
@@ -38,14 +38,14 @@ class Post extends React.Component {
         document.title = data.pureTitle;
         Helper.recordPageview('/post/' + data.createdAt, data.pureTitle);
         this.setState({
-            post: data,
-            loading: false,
+            post: data
         });
         Helper.postFetch(data.fullTitle).then(res => {
             return res.text();
         }).then(text => {
             this.setState({
-                html: text
+                html: text,
+                loading: false
             })
         }).catch(error => {
             this.setState({
@@ -61,12 +61,12 @@ class Post extends React.Component {
     render() {
         if (this.state.loading) {
             return (
-                <h1>Loading...</h1>
+                <h1 className="tc">Loading...</h1>
             );
         }
         if (this.state.error) {
             return (
-                <h1>{this.state.error}</h1>
+                <h1 className="tc">{this.state.error}</h1>
             );
         }
         return (

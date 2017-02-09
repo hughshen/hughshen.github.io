@@ -6,7 +6,7 @@ if (!window.Promise) window.Promise = Promise;
 const LIST_API = 'https://api.github.com/repos/hughshen/blog/contents/data.json';
 const POST_API = 'https://api.github.com/repos/hughshen/blog/contents/posts/:title';
 
-var Helper = {
+const Helper = {
     listFetch: () => {
         return fetch(LIST_API, {
             headers: {
@@ -15,7 +15,7 @@ var Helper = {
         });
     },
     postFetch: title => {
-        var api = POST_API.replace(':title', title);
+        let api = POST_API.replace(':title', title);
         return fetch(api, {
             headers: {
                 'Accept': 'application/vnd.github.v3.html',
@@ -23,10 +23,10 @@ var Helper = {
         });
     },
     postsParse: data => {
-        var posts = {};
+        const posts = {};
         data.map((title, key) => {
-            var timestamp = title.match(/[\d]{13}/i)[0];
-            var date = new Date(parseFloat(timestamp));
+            let timestamp = title.match(/[\d]{13}/i)[0];
+            let date = new Date(parseFloat(timestamp));
             posts[timestamp] =  {
                 fullTitle: title,
                 pureTitle: title.slice(0, -3).replace(/[\d]{13}-/i, ''),
@@ -47,4 +47,4 @@ var Helper = {
     },
 }
 
-module.exports = Helper;
+export default Helper;

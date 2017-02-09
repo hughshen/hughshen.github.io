@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Helper from '../helper';
+import Helper from 'third-party/helper';
 
-class Blog extends React.Component {
+class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             posts: [],
             loading: true,
-            error: null,
+            error: null
         }
     }
 
@@ -34,12 +34,12 @@ class Blog extends React.Component {
     render() {
         if (this.state.loading) {
             return (
-                <h1>Loading...</h1>
+                <h1 className="tc">Loading...</h1>
             );
         }
         if (this.state.error) {
             return (
-                <h1>{this.state.error}</h1>
+                <h1 className="tc">{this.state.error}</h1>
             );
         }
         var items = Object.keys(this.state.posts).map((val, key) => {
@@ -57,11 +57,11 @@ class Blog extends React.Component {
         });
         return (
             <div className="list-wrap">
-                <div className="list-count">当前共 {Object.keys(this.state.posts).length} 篇</div>
+                <div className="list-count">共 {Object.keys(this.state.posts).length} 篇</div>
                 <div className="list-items">{items}</div>
             </div>
         );
     }
 }
 
-export default Blog;
+export default List;
