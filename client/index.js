@@ -7,7 +7,8 @@ import List from 'components/List';
 import Post from 'components/Post';
 
 import 'third-party/ga';
-import './style.less';
+import 'index.html';
+import 'style.less';
 
 render((
     <Router history={browserHistory}>
